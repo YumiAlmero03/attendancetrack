@@ -1,0 +1,240 @@
+@font-face {
+  font-family: Nunito-Regular;
+  src: url(font/Nunito-Regular.ttf);
+}
+@font-face {
+  font-family: Nunito-Bold;
+  src: url(font/Nunito-Bold.ttf);
+}
+
+*{
+	font-family: Nunito-Regular;
+}
+h1,h2,h3,h4,h5, th, label{
+	font-family: Nunito-Bold;
+}
+.btn{
+	font-family: Nunito-Bold;
+	padding: .375rem 30px;
+}
+input[type="file"] {
+    height: 1px;
+    opacity: 0;
+}
+.center-div{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 255px);
+}
+.bg-main{
+	background-color: #77A6F7!important;
+	background: #77A6F7!important;
+}
+.bg-main-light{
+	background-color: #d3e3fc!important;
+	background: #d3e3fc!important;
+}
+.bg-second{
+	background-color: #00887A!important;
+	background: #00887A!important;
+}
+.bg-third{
+	background-color: #FFCCBC!important;
+	background: #FFCCBC!important;
+}
+.bg-half{
+	background-image: url('../assets/bg.png');
+}
+.bg-white{
+	background-color: #fff;
+	background: #fff;
+}
+
+.border-third{
+	border: #FFCCBC 10px solid!important;
+}
+.text-main{
+	color: #77A6F7!important;
+}
+.text-second{
+	color: #00887A!important;
+}
+ .text-second a{
+	font-size: 25px;
+    font-weight: bold;
+    margin: 0 20px;
+	color: #00887A!important;
+}
+.text-second a.active{
+	color: #000!important;
+}
+.text-third{
+	color: #FFCCBC!important;
+}
+.text-error{
+	color: #dc3545;
+}
+.school-header{
+	display: flex;
+}
+.school-header .col-sm-4,.school-header .col-sm-6 {
+	margin: auto;
+}
+
+.school-header .col-sm-8, .school-header .col-sm-2, .school-header .col-sm-3 {
+	margin: auto;
+}
+.navbar{
+	height: 40px;
+}
+a.nav-link{
+	font-family: Nunito-Bold;
+
+}
+.modal-header{
+	border: 0;
+}
+.modal-footer{
+	border: 0;
+}
+.modal-content{
+	border-radius: 50px;
+}
+.modal-dialog{
+	max-width: 1000px;
+}
+
+.modal form input{
+	background: #D3E3FC!important;
+	border: 1px solid #00887A!important;
+}
+.modal .form-control:disabled, .modal .form-control[readonly]{
+	background: #D3E3FC!important;
+	border: 1px solid #00887A!important;
+}
+
+.form-main{
+	border-radius: 50px;
+	    width: 30%;
+}
+
+.form-main form input{
+	background: #FFCCBC;
+	border: 1px solid #FFCCBC;
+}
+form.form-main input{
+	background: #77A6F7;
+	border: 1px solid #77A6F7;
+	color: #fff;
+}
+form.form-main input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #000;
+  opacity: 1; /* Firefox */
+}
+
+form.form-main input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #000;
+}
+
+form.form-main input::-ms-input-placeholder { /* Microsoft Edge */
+  color: #000;
+}
+.datetimepicker input{
+    border: solid #000;
+    border-width: 2px;
+    margin-right: 20px;
+    padding: 5px;
+    text-align: center;
+}
+.search input{
+    border: solid #000;
+    border-width: 2px;
+    margin-right: 20px;
+    padding: 5px;
+}
+.search input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #000;
+  opacity: 1; /* Firefox */
+}
+
+.search input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #000;
+}
+
+.search input::-ms-input-placeholder { /* Microsoft Edge */
+  color: #000;
+}
+.nav.page-title{
+	border-bottom: solid #00887A;
+}
+.nav.page-title a.active{
+	color: #000;
+	font-weight: bold;
+} 
+.nav.page-title a{
+	font-family: Nunito-Bold;
+	font-size: 20px;
+	margin: 10px 50px;
+	text-decoration: none;
+}
+.nav.page-title li{
+	font-family: Nunito-Bold;
+	border-left: solid #00887A;
+
+}
+.nav.page-title li:first-child{
+	border-left: 0;
+}
+.nav.page-title li:first-child a{
+	margin-left: 10px;
+}
+
+.dropdown-item{
+	font-family: Nunito-Bold;
+	width: 80%;
+}
+
+.home-photo-hold{
+	padding: 20px;
+    border: 1rem solid;
+}
+.home-photo-hold.main{
+	border-color: #77A6F7;
+}
+.home-photo-hold.second{
+	border-color: #00887A;
+}
+.home-photo-hold.third{
+	border-color: #FFCCBC;
+}
+
+.about-photo{
+		padding: 0;
+}
+.about-box{
+		padding: 0;
+		margin: 20px;
+    border: 6px #77A6F7 solid;
+
+}
+.about-desc{
+	padding: 20px;
+}
+.about-hold.col-sm-6{
+	    max-width: 48%!important;
+    margin: 1%!important;
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
