@@ -14,7 +14,7 @@ if (otpVerify($_POST["code"], $otp['otp'])) {
     header("location: ../admin/index.php");
 } else {
     $_SESSION["error"] = "OTP Incorrect";
-    header("location: /school_attendance/admin/otp.php");
+    header("location: /admin/otp.php");
 }
 // date_default_timezone_set('Asia/Manila');
 // check if expired
@@ -27,12 +27,12 @@ if (otpVerify($_POST["code"], $otp['otp'])) {
 //         header("location: ../admin/index.php");
 //     } else {
 //         $_SESSION["error"] = "OTP Expired";
-//         header("location: /school_attendance/admin/login.php");
+//         header("location: /admin/login.php");
 //     }
 
 // } else {
 //     $_SESSION["error"] = "OTP Incorrect";
-//     header("location: /school_attendance/admin/login.php");
+//     header("location: /admin/login.php");
 
 // }
  ?>
