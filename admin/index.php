@@ -1,6 +1,8 @@
 <?php 
-
 require_once '../inc/session.php';
+if (!($_SESSION["level"] === 'admin')) { 
+   header("location: attendance.php");
+}
 require_once '../inc/head.php';
 require_once 'head.php';
 require_once '../inc/db.php';
@@ -14,10 +16,100 @@ $ar = mysqli_query($conn, "SELECT * FROM login WHERE type='Student' and login be
 $rows = $ar->fetch_all();
 $visitor = mysqli_query($conn, "SELECT * FROM login WHERE type<>'Student' and login between '$date_from 00:00:00' and '$date_to 23:59:59'");
 $visitors = $visitor->fetch_all();
+
+// counts
+
+$getStud = mysqli_query($conn, "SELECT COUNT(id) as count FROM registered WHERE type='Student'");
+$studentCount = $getStud->fetch_assoc();
+
+$getVisitors = mysqli_query($conn, "SELECT COUNT(id) as count FROM visitor ");
+$visitorsCount = $getVisitors->fetch_assoc();
+$getParent = mysqli_query($conn, "SELECT COUNT(id) as count FROM visitor WHERE type='Parent'");
+$parentCount = $getParent->fetch_assoc();
+$getAlumni = mysqli_query($conn, "SELECT COUNT(id) as count FROM visitor WHERE type='Alumni'");
+$alumniCount = $getAlumni->fetch_assoc();
+$getVisit = mysqli_query($conn, "SELECT COUNT(id) as count FROM visitor WHERE type='Visitor'");
+$visitCount = $getVisit->fetch_assoc();
+$getAccounts = mysqli_query($conn, "SELECT COUNT(id) as count FROM users ");
+$accountsCount = $getAccounts->fetch_assoc();
+$getPersonel = mysqli_query($conn, "SELECT COUNT(id) as count FROM users where level<>'class' and level<>'faculty'");
+$personelCount = $getPersonel->fetch_assoc();
 ?>
 <div>
   
   <div class="bg-main-light">
+    <div class="container-fluid p-5">
+        <div class="row py-2">
+            <div class="col-md-4 px-2">
+                <div class="row bg-white px-2 py-4 set-middle">
+                    <div class="col-lg-6 ">
+                       <h4 class="text-second set-middle">Registered Students</h4> 
+                    </div>
+                    <div class="col-lg-6 text-right">
+                       <h1 class="text-main set-middle"><?php echo $studentCount['count']; ?></h1> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 px-2">
+                <div class="row bg-white px-2 py-4 set-middle">
+                    <div class="col-lg-3 ">
+                       <h4 class="text-second set-middle">Visitor Logs</h4> 
+                    </div>
+                    <div class="col-lg-3 text-center">
+                       <h1 class="text-main set-middle"><?php echo $visitorsCount['count']; ?></h1> 
+                    </div>
+                    <div class="col-lg-2 text-center">
+                       <h2 class="text-main set-middle"><?php echo $parentCount['count']; ?></h2> 
+                       <h5 class="text-second set-second">Parent</h5> 
+                    </div>
+                    <div class="col-lg-2 text-center">
+                       <h2 class="text-main set-middle"><?php echo $alumniCount['count']; ?></h2> 
+                       <h5 class="text-second set-second">Alumni</h5> 
+                    </div>
+                    <div class="col-lg-2 text-center">
+                       <h2 class="text-main set-middle"><?php echo $visitCount['count']; ?></h2> 
+                       <h5 class="text-second set-second">Visitor</h5> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row py-2">
+            <div class="col-md-3 px-2">
+                <div class="row bg-white px-2 py-4 set-middle">
+                    <div class="col-lg-6 ">
+                       <h4 class="text-second set-middle">Accounts</h4> 
+                    </div>
+                    <div class="col-lg-6 text-right">
+                       <h1 class="text-main set-middle"><?php echo $accountsCount['count']; ?></h1> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 px-2">
+                <div class="row bg-white px-2 py-4 set-middle">
+                    <div class="col-md-6 ">
+                       <h4 class="text-second set-middle">Registered Personnel</h4> 
+                    </div>
+                    <div class="col-md-6 text-center">
+                       <h1 class="text-main set-middle"><?php echo $personelCount['count']; ?></h1> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 px-2">
+                <div class="row bg-white px-2 py-4 set-middle">
+                    <div class="col-md-12 text-justify">
+                       <h1 class="text-main set-middle"><?php echo date('F j, Y'); ?></h1> 
+                    </div>
+                    <div class="col-lg-4 text-left">
+                       <h3 class="text-second set-middle"><?php echo date('l'); ?></h3> 
+                    </div>
+                    <div class="col-lg-8 text-right">
+                       <h3 class="text-second set-middle" id="MyClockDisplay" class="clock" onload="showTime()"></h3> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid p-5">
         <ul class="nav nav-tabs page-title">
           <li ><a data-toggle="tab" href="#morning" class="active">Morning</a></li>
@@ -159,7 +251,8 @@ const chartMonth = new Chart(ctxMnt, {
                         'October',
                         'November',
                         'December'];
-            $visitor = mysqli_query($conn, "SELECT MONTH(login.date),COUNT(*) FROM `login` WHERE login.type<>'Student' and login.date between '$date_from' and '$date_to' GROUP BY MONTH(login.date)");
+                        $year = date('Y');
+            $visitor = mysqli_query($conn, "SELECT MONTH(login.date),COUNT(*) FROM `login` WHERE login.type<>'Student' and YEAR(login.date) = '$year' GROUP BY MONTH(login.date)");
             $lbl3 = $visitor->fetch_all();
             foreach ($lbl3 as $value) {
                 $mon = $value[0] - 1;

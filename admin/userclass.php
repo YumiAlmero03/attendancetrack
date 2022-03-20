@@ -6,10 +6,13 @@ require_once '../inc/hash.php';
 require_once 'head.php';
 require_once '../inc/otp.php';
 require_once '../inc/mail.php';
+require_once '../inc/qr.php';
 
 
 $username = mysqli_real_escape_string($conn, $_POST['username']);
-$name = mysqli_real_escape_string($conn, $_POST['name']);
+$fn = mysqli_real_escape_string($conn, $_POST['fn']);
+$ln = mysqli_real_escape_string($conn, $_POST['ln']);
+$name = $fn . ' ' . $ln;
 $level = mysqli_real_escape_string($conn, $_POST['level']);
 $pass = mysqli_real_escape_string($conn, $_POST['pass']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -25,7 +28,7 @@ $mailbody = 'You have been  registered in Student Management And Attendance Moni
 <br> 
 here is your login details:
 <br> 
-Username:"'.$email.'"
+Username:"'.$username.'"
 <br> 
 Password: "'.$pass.'"
 <br> 
@@ -48,6 +51,51 @@ interval: [Depends]
 ';
 $fetchuser = mysqli_query($conn, "SELECT * FROM users where username='$username'");
 $user = $fetchuser->fetch_assoc();
+function uploadFile($post)
+{
+  
+  // photoupload
+  $target_dir = "../uploads/profile/";
+  $filename = basename($post["photo"]["name"]);
+  $target_file = $target_dir . basename($post["photo"]["name"]);
+  $uploadOk = 1;
+  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+  // Check if image file is a actual image or fake image
+  $check = getimagesize($post["photo"]["tmp_name"]);
+  if($check !== false) {
+    $msg = "File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+  } else {
+    $msg = "File is not an image.";
+    $uploadOk = 0;
+  }
+
+
+  // Check file size
+  if ($post["photo"]["size"] > 500000) {
+    $msg = "Sorry, your file is too large.";
+    $uploadOk = 0;
+  }
+
+  // Allow certain file formats
+  if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+  && $imageFileType != "gif" ) {
+    $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+  }
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk === 0) {
+    return  ['msg' => $msg, 'type' => 'error'];
+  // if everything is ok, try to upload file
+  } else {
+    if (move_uploaded_file($post["photo"]["tmp_name"], $target_file)) {
+      return ['msg' => "The file ". htmlspecialchars( basename( $post["photo"]["name"])). " has been uploaded.", 'type' => 'info', 'filename' => $filename];
+    } else {
+      return ['msg' => "Sorry, there was an error uploading your file.", 'type' => 'error'];
+    }
+  }
+}
 
 if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$/m', $pass)) {
   if (!empty($user)) {
@@ -55,8 +103,7 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
     header("location: users.php");
   } else {
     $password = encryp_word($pass);
-    $insert_code = "INSERT INTO `users` (`username`, `password`, `level`, `name`, `email`, `otp`) 
-    VALUES (?,?,?,?,?,?)";
+    $insert_code = "INSERT INTO `registered`(`qrcode`, `firstname`, `lastname`, `type`, `course`, `year`, `section`, `bday`, `email`, `address`, `pname`, `pcontact`, `photo`, `qrphoto`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -65,18 +112,59 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
       header("location: users.php");
     }
     else{
+
+        if ($level === 'class') {
+          $type = 'Student';
+          $studid = mysqli_real_escape_string($conn, $_POST['meta']['stud_num']);
+          $course = $_POST['meta']['course'];
+          $yr = $_POST['meta']['yr'];
+          $sec = $_POST['meta']['sec'];
+          $qrfile = upload_qr($studid, $studid.$course.$yr.$sec.$ln);
+        } elseif ($level === 'faculty') {
+          $type = 'Faculty';
+          $studid = mysqli_real_escape_string($conn, $_POST['meta']['id_num']);
+          $course = $_POST['meta']['department'];
+          $yr = null;
+          $sec = null;
+          $qrfile = upload_qr($studid, $studid.$course.$ln);
+        }
+          $bday = $_POST['meta']['bday'];
+          $add = $_POST['meta']['address'];
+          $pname = $_POST['meta']['emergency'];
+          $pnum = $_POST['meta']['emergency_num'];
+          $msg = uploadFile($_FILES);
+          $filename =  $msg['filename'];
+
         mailSend($email,$name,'User Created',$mailbody);
-        mysqli_stmt_bind_param($stmt, "ssssss", $username, $password, $level, $name, $email,$otpcode );
+        mysqli_stmt_bind_param($stmt, "ssssssssssssss", $studid, $fn, $ln, $type, $course, $yr, $sec, $bday, $email, $add, $pname, $pnum, $filename, $qrfile);
         mysqli_stmt_execute($stmt);
-        $id = mysqli_stmt_insert_id($stmt);
-        // meta
-        foreach ($_POST['meta'] as $key => $value) {
-          var_dump(mysqli_query($conn, "INSERT INTO `meta`(`key`,`value`, `user_id`) VALUES ('$key','$value','$id')")); 
+        $reg_id = mysqli_stmt_insert_id($stmt);
+
+        // user create
+        // mysqli_query($conn, "INSERT INTO `users` (`username`, `password`, `level`, `name`, `email`, `otp`) VALUES ('$username', '$password', '$level', '$name', '$email', '$otpcode')"); 
+        $insert_code = "INSERT INTO `users` (`username`, `password`, `level`, `name`, `email`, `otp`, `reg_id`) 
+        VALUES (?,?,?,?,?,?,?)";
+
+        $stmt = mysqli_stmt_init($conn);
+
+        if(!mysqli_stmt_prepare($stmt, $insert_code)){
+            $_SESSION["error"] = "Registration Failed!";
+          header("location: users.php");
+        }
+        else{
+            mailSend($email,$name,'User Created',$mailbody);
+            mysqli_stmt_bind_param($stmt, "sssssss", $username, $password, $level, $name, $email,$otpcode,$reg_id );
+            mysqli_stmt_execute($stmt);
+            $id = mysqli_stmt_insert_id($stmt);
+          // meta
+          foreach ($_POST['meta'] as $key => $value) {
+            mysqli_query($conn, "INSERT INTO `meta`(`key`,`value`, `user_id`) VALUES ('$key','$value','$id')"); 
+          }
         }
         // mysqli_stmt_close($stmt);
 
         $_SESSION["info"] = "Registered!";
-      // header("location: users.php");
+      header("location: users.php");
     }
   }
   

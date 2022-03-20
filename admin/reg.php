@@ -74,7 +74,7 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
   $stmt = mysqli_stmt_init($conn);
   if(mysqli_stmt_prepare($stmt, $insert_code)){
     if ($msg['type'] === 'info') {
-      $qrfile = upload_qr($studid, $course.$yr.$sec.$ln);
+      $qrfile = upload_qr($studid, $studid.$course.$yr.$sec.$ln);
       $filename =  $msg['filename'];
         mysqli_stmt_bind_param($stmt, "ssssssssssssss", $studid, $fn, $ln, $type, $course, $yr, $sec, $bday, $email, $add, $pname, $pnum, $filename, $qrfile);
         mysqli_stmt_execute($stmt);

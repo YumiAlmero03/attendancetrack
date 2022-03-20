@@ -13,7 +13,6 @@ $id = mysqli_real_escape_string($conn, $_POST['id']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $fetchuser = mysqli_query($conn, "SELECT * FROM users where username='$username' and NOT id=$id");
 $user = $fetchuser->fetch_assoc();
-var_dump($user);
 if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$/m', $pass)) {
   if (!empty($user)) {
       $_SESSION["error"] = "Username Already taken";
@@ -22,6 +21,12 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
     $password = encryp_word($pass);
     $insert_code = "UPDATE users set username='$username',password='$password',name='$name',email='$email' where id=$id";
     mysqli_query($conn, $insert_code);
+    if (isset($_POST['meta'])) {
+      foreach ($_POST['meta'] as $key => $value) {
+        $insert_code = "UPDATE meta set value='$value' where id='$key'";
+        mysqli_query($conn, $insert_code);
+      }
+    }
     $_SESSION["info"] = "Edit Success!";
     header("location: users.php");
   }

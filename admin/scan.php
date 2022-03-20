@@ -1,9 +1,10 @@
 <?php
-require 'inc/head.php';
-require_once 'header.php';
+require '../inc/head.php';
+require_once '../inc/session.php';
+// require_once '../header.php';
 
 // get pass
-require_once 'inc/db.php'; 
+require_once '../inc/db.php'; 
 $search_login = "SELECT passnum FROM visitor join login on login.reg_id=visitor.id where logout is null";
 $logs = mysqli_query($conn,$search_login);
 $login = $logs->fetch_all();
@@ -31,7 +32,7 @@ $remain = array_diff($passnumchoice, $remove);
 </head>
 <body>
   
-<?php require_once 'header.php'; ?> 
+<?php require_once 'head.php'; ?> 
 <div class="bg-main-light">
     <div class="container p-5 ">
         <div class=" px-5">
@@ -39,7 +40,7 @@ $remain = array_diff($passnumchoice, $remove);
                 <div class=" p-5">
                     <h2  class="text-center pb-5">Scan Qr to Login</h2 > 
                     <!-- </br> -->
-                    <!-- <select class="form-control" id="subject"> 
+                    <select class="form-control" id="subject"> 
                       <option disabled selected>Select Subject</option>
                       <?php 
                         foreach ($class as $value) {
@@ -47,8 +48,7 @@ $remain = array_diff($passnumchoice, $remove);
                         }
                        ?>
                       
-                    </select>  -->      
-                    <input type="hidden" id="subject" value="Entry">        
+                    </select>               
                 </div>
                 <div class="p-3 bg-third">
                     <video id="preview" width="100%"></video>        
@@ -140,7 +140,7 @@ $remain = array_diff($passnumchoice, $remove);
     </div>
   </div>
 </div>
-<?php require 'inc/bottom.php' ?>
+<?php require '../inc/bottom.php' ?>
 
 <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 <script type="text/javascript">
@@ -149,7 +149,7 @@ $remain = array_diff($passnumchoice, $remove);
     scanner.addListener('scan',function(content){
          subject = document.getElementById("subject").value;
 
-         window.open('scan.php?code='+content+'&subj='+subject, '_blank');
+         window.open('../scan.php?code='+content+'&subj='+subject, '_blank');
     });
     Instascan.Camera.getCameras().then(function (cameras){
         console.log(cameras);

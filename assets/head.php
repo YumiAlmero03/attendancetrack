@@ -20,10 +20,10 @@
             <a class="nav-link <?= ($activePage == 'registered') || ($activePage == 'register') ? 'active':''; ?>" href="registered.php">Students</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?= ($activePage == 'visitors')  ? 'active':''; ?>" href="visitors.php">Visitor</a>
+            <a class="nav-link <?= ($activePage == 'users') || ($activePage == 'useracc') ? 'active':''; ?>" href="users.php">Personel</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?= ($activePage == 'users') || ($activePage == 'useracc') ? 'active':''; ?>" href="users.php">Account</a>
+            <a class="nav-link <?= ($activePage == 'visitors')  ? 'active':''; ?>" href="visitors.php">Visitor</a>
           </li>
           <?php } else { ?>
             <li class="nav-item">

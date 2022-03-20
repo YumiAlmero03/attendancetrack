@@ -1,9 +1,9 @@
 <?php 
-
 require_once '../inc/session.php';
 require_once '../inc/head.php';
 require_once 'head.php';
 require_once '../inc/db.php';
+
 
 date_default_timezone_set('Asia/Manila');
 
@@ -11,7 +11,7 @@ $date_from = isset($_GET['date_from']) ? $_GET['date_from'] : date('Y-m-d');
 $date_to =  isset($_GET['date_to']) ? $_GET['date_to'] : date('Y-m-d');
 $username = $_SESSION['username'];
 if ($_SESSION['level'] === 'class') {
-    $fetchuser = mysqli_query($conn, "SELECT course, year, section FROM users join registered on users.reg_id = registered.id where users.username=$username");
+    $fetchuser = mysqli_query($conn, "SELECT registered.course, registered.year, registered.section FROM users join registered on users.reg_id = registered.id where users.username='$username'");
     $user = $fetchuser->fetch_assoc();
     $ar = mysqli_query($conn, "SELECT * FROM login join registered on login.reg_id = registered.id WHERE login.type='Student' and login.login between '$date_from 00:00:00' and '$date_to 23:59:59'");
 } else {

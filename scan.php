@@ -81,12 +81,14 @@ if ($userData) {
                                 
                             </td>
                         </tr>
+                        <?php if ($subject != 'Entry') { ?>
                         <tr>
                             <td>Subject:</td>
                             <td><?php echo $subject; ?></td>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
                         </tr>
+                        <?php } ?>
                         <tr>
                             <td>TIME-IN:</td>
                             <td><?php echo $loggedin; ?></td>

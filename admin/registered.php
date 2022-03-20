@@ -7,13 +7,14 @@ require_once '../inc/db.php';
 
 if (isset($_GET['name'])) {
   $name = $_GET['name'];
-  $ar = mysqli_query($conn, "SELECT * FROM registered where lastname like '%$name%'");
+  $ar = mysqli_query($conn, "SELECT * FROM registered where lastname like '%$name%'  WHERE type='Student'");
 } else {
-  $ar = mysqli_query($conn, "SELECT * FROM registered limit 50");
+  $ar = mysqli_query($conn, "SELECT * FROM registered WHERE type='Student' limit 50 ");
 }
+$photo = '../assets/pup.png';
 
 $rows = $ar->fetch_all();
-$count = mysqli_query($conn, "SELECT count(*) as count FROM registered");
+$count = mysqli_query($conn, "SELECT count(*) as count FROM registered WHERE type='Student'");
 $num = $count->fetch_assoc();
 ?>
 <div class="bg-main-light">
@@ -36,7 +37,10 @@ $num = $count->fetch_assoc();
             </form>
           </div>
 
-          <div class="float-right"><a class="btn bg-second text-white mb-2" href="register.php">Register</a></div>
+          <div class="float-right">
+            <a class="btn bg-second text-white mb-2" href="register.php">Register</a>
+            <a  class="btn bg-second text-white mb-2" data-toggle="modal" data-target="#reportModalClass">Create Class Representative</a>
+          </div>
       </div>
     <table class="table">
       <thead>
@@ -126,8 +130,126 @@ $num = $count->fetch_assoc();
 
       </tbody>
     </table>
+    <div class="modal fade" id="reportModalClass" tabindex="-1" aria-labelledby="visitorModalLabelAdd" aria-hidden="true">
+      <div class="modal-dialog ">
+        <div class="modal-content bg-third p-5">
+          <div class="modal-header text-second text-center">
+            <h3 class="modal-title text-center " id="visitorModalLabelAdd">Create User</h3>
+          </div>
+          <div class="modal-body">
+            <h3 class="modal-title pb-3" id="visitorModalLabelAdd">Access Level: Class Representative</h3>
+            <form action="userclass.php" method="post" enctype="multipart/form-data">
+              <div class="form-row">
+                <div class="float-left text-center">
+                    <img id="previewClass" src="<?php echo $photo ?>" alt="your image" width="190px"/>
+                    <label class="btn bg-second text-white pt-2 btn-block m-0" for="photo">Choose File</label>
+                    <?php 
+                      if (isset($_GET['id'])) {
+                      ?>
+                    <input  type='file' onchange="readURLClass(this);" id="photo" name="photo" accept="image/*" />
+                      <?php
+                      } else {
+                      ?> 
+                    <input  type='file' onchange="readURLClass(this);" id="photo" name="photo" accept="image/*" required />
+                    <?php
+                      }
+                    ?>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="username">Username</label>
+                  <input name="username" type="text" class="form-control" id="username" required>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="username">Class Representative (name)</label>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="name">First Name</label>
+                  <input name="fn" type="text" class="form-control" id="fn" required>
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="name">Last Name</label>
+                  <input name="ln" type="text" class="form-control" id="ln" required>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="email">Email</label>
+                  <input name="email" class="form-control" id="email" value="studentmngmt@gmail.com" required>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="email">Course</label>
+                  <select name="meta[course]" class="form-control" id="inCourse" required value="">
+                        <option disabled >Select Course</option>
+                        <option value="BSA" >BS Accountancy</option>
+                        <option value="BSBAFM" >BSBA Financial Management</option>
+                        <option value="BSEDUC" >BS English</option>
+                        <option value="BSENTREP" >BS Entrepreneurship</option>
+                        <option value="BSHM" >BS Hospitality Management</option>
+                        <option value="BSIT" >BS Information Technology</option>
+                        <option value="BSPSYCH" >BS Psychology</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="email">Year</label>
+                  <input name="meta[yr]" type="text" class="form-control" id="num" required>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="email">Section</label>
+                  <input name="meta[sec]" type="text" class="form-control" id="num" required>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="email">Student Number</label>
+                  <input name="meta[stud_num]" type="text" class="form-control" id="num" required>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="email">Birthday</label>
+                  <input name="meta[bday]" type="date" class="form-control" id="num" required>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="email">Address</label>
+                  <input name="meta[address]" type="text" class="form-control" id="num" required>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="email">Contact person in case of Emergency</label>
+                  <input name="meta[emergency]" type="text" class="form-control" id="num" required>
+                </div>
+                <div class="form-group col-md-9">
+                  <label for="email">Contact Number</label>
+                  <input name="meta[emergency_num]" type="text" class="form-control" id="num" required>
+                </div>
+
+              </div> 
+              <div class="form-row">
+                <div class="form-group col-md-9">
+                  <label for="pass">Password</label>
+                  <input type="hidden" name="level" value="class">
+                  <input name="pass" type="password" class="form-control" id="pass" required>
+                </div>
+              </div>
+              <button type="submit" class="btn bg-second text-white">Create</button>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 </div>
 <?php 
 require_once '../inc/bottom.php';
 ?>
+<script type="text/javascript">
+    function readURLClass(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#previewClass')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>

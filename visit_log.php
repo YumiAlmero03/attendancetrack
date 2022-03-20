@@ -25,7 +25,7 @@ $img = $_POST['image'];
     $file = $folderPath . $fileName;
     file_put_contents($file, $image_base64);
 
-$insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo) VALUES ('$name','$purpose','$address','$email','$passnum','$file')";
+$insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo,type) VALUES ('$name','$purpose','$address','$email','$passnum','$file','$type')";
     mysqli_query($conn,$insert_visit);
     $getID = mysqli_insert_id($conn);
     $insert_code = "INSERT INTO `login` (`name`, `type`, `reg_id`, `date`) VALUES (?,?,?,?)";

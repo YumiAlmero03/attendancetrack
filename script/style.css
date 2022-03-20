@@ -27,6 +27,12 @@ input[type="file"] {
 	left: 50%;
 	transform: translate(-50%, 255px);
 }
+.set-middle{
+	  justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100%;
+}
 .bg-main{
 	background-color: #77A6F7!important;
 	background: #77A6F7!important;
