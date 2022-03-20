@@ -9,7 +9,7 @@ require_once '../inc/mail.php';
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: /school_attendance/admin/index.php");
+    header("location: /admin/index.php");
     exit;
 }
 

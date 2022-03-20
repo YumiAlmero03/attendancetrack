@@ -5,7 +5,7 @@ session_start();
  $activePage = basename($_SERVER['PHP_SELF'], ".php");
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: /school_attendance/admin/login.php");
+    header("location: /admin/login.php");
     exit;
 }
 

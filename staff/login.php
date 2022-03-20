@@ -6,7 +6,7 @@ require_once '../inc/head.php';
 require_once '../inc/db.php';
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: /school_attendance/admin/index.php");
+    header("location: /admin/index.php");
     exit;
 }
 
