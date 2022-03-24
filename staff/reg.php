@@ -18,7 +18,7 @@ $type = mysqli_real_escape_string($conn, $_POST['type']);
 $studid = mysqli_real_escape_string($conn, $_POST['studid']);
 
 // photoupload
-$target_dir = "../uploads/profile/";
+$target_dir = "";
 $target_file = $target_dir . basename($_FILES["photo"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));

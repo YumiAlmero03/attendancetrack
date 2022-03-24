@@ -19,7 +19,7 @@ $pnum = '';
 if (isset($_GET['id'])) {
 	$getReg = mysqli_query($conn, "SELECT * FROM `registered` where id=".$_GET['id']);
     $registered = $getReg->fetch_assoc();
-    $photo = '../uploads/profile/'.$registered['photo'];
+    $photo = $registered['photo'];
     $fn = $registered['firstname'];
     $ln = $registered['lastname'];
     $course = $registered['course'];
