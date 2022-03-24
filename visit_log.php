@@ -45,6 +45,7 @@ function uploadVisitIMG($name,$tmpname)
     ]);
     return $result['ObjectURL'];
 }
+    var_dump($fileName);
     $file = uploadVisitIMG($fileName,$image_base64);
     
 
