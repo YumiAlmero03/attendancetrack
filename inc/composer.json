@@ -1,5 +1,6 @@
 {
     "require": {
-        "aws/aws-sdk-php": "^3.216"
+        "aws/aws-sdk-php": "^3.216",
+        "spomky-labs/otphp": "^10.0"
     }
 }
