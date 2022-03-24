@@ -132,8 +132,9 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
           $add = $_POST['meta']['address'];
           $pname = $_POST['meta']['emergency'];
           $pnum = $_POST['meta']['emergency_num'];
-          $msg = uploadFile($_FILES);
+          // $msg = uploadFile($_FILES);
           $filename =  $msg['filename'];
+          $filename = uploadS3($post["photo"]["name"],$post["photo"]["tmp_name"]);
 
         mysqli_stmt_bind_param($stmt, "ssssssssssssss", $studid, $fn, $ln, $type, $course, $yr, $sec, $bday, $email, $add, $pname, $pnum, $filename, $qrfile);
         mysqli_stmt_execute($stmt);
