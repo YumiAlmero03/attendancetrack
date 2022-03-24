@@ -41,6 +41,6 @@ $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo
         mysqli_stmt_close($stmt);
 
     }
-    // header("location: index.php");
+    header("location: index.php");
     
  ?>
