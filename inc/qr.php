@@ -9,9 +9,8 @@ $text = "PRODUCT ID 23456";
  
 function upload_qr($text, $filename)
 {
-	$fileName = $filename.'.png'; 
-	$tempDir = "/";                   
-	$filePath = $tempDir . "/" . $fileName;
+	$fileName = $filename.'.png';                  
+	$filePath = $fileName;
 
 	require 'vendor/autoload.php';
 
