@@ -17,57 +17,59 @@ $add = mysqli_real_escape_string($conn, $_POST['add']);
 $pname = mysqli_real_escape_string($conn, $_POST['pname']);
 $pnum = mysqli_real_escape_string($conn, $_POST['pnum']);
 $type = mysqli_real_escape_string($conn, $_POST['type']);
-function uploadFile($post)
-{
+// function uploadFile($post)
+// {
   
-  // photoupload
-  $target_dir = "../uploads/profile/";
-  $filename = basename($post["photo"]["name"]);
-  $target_file = $target_dir . basename($post["photo"]["name"]);
-  $uploadOk = 1;
-  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+//   // photoupload
+//   $target_dir = "../uploads/profile/";
+//   $filename = basename($post["photo"]["name"]);
+//   $target_file = $target_dir . basename($post["photo"]["name"]);
+//   $uploadOk = 1;
+//   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-  // Check if image file is a actual image or fake image
-  $check = getimagesize($post["photo"]["tmp_name"]);
-  if($check !== false) {
-    $msg = "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    $msg = "File is not an image.";
-    $uploadOk = 0;
-  }
+//   // Check if image file is a actual image or fake image
+//   $check = getimagesize($post["photo"]["tmp_name"]);
+//   if($check !== false) {
+//     $msg = "File is an image - " . $check["mime"] . ".";
+//     $uploadOk = 1;
+//   } else {
+//     $msg = "File is not an image.";
+//     $uploadOk = 0;
+//   }
 
 
-  // Check file size
-  if ($post["photo"]["size"] > 500000) {
-    $msg = "Sorry, your file is too large.";
-    $uploadOk = 0;
-  }
+//   // Check file size
+//   if ($post["photo"]["size"] > 500000) {
+//     $msg = "Sorry, your file is too large.";
+//     $uploadOk = 0;
+//   }
 
-  // Allow certain file formats
-  if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-  && $imageFileType != "gif" ) {
-    $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-  }
-  // Check if $uploadOk is set to 0 by an error
-  if ($uploadOk === 0) {
-    return  ['msg' => $msg, 'type' => 'error'];
-  // if everything is ok, try to upload file
-  } else {
-    if (move_uploaded_file($post["photo"]["tmp_name"], $target_file)) {
-      return ['msg' => "The file ". htmlspecialchars( basename( $post["photo"]["name"])). " has been uploaded.", 'type' => 'info', 'filename' => $filename];
-    } else {
-      return ['msg' => "Sorry, there was an error uploading your file.", 'type' => 'error'];
-    }
-  }
-}
+//   // Allow certain file formats
+//   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+//   && $imageFileType != "gif" ) {
+//     $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//     $uploadOk = 0;
+//   }
+//   // Check if $uploadOk is set to 0 by an error
+//   if ($uploadOk === 0) {
+//     return  ['msg' => $msg, 'type' => 'error'];
+//   // if everything is ok, try to upload file
+//   } else {
+//     if (move_uploaded_file($post["photo"]["tmp_name"], $target_file)) {
+//       return ['msg' => "The file ". htmlspecialchars( basename( $post["photo"]["name"])). " has been uploaded.", 'type' => 'info', 'filename' => $filename];
+//     } else {
+//       return ['msg' => "Sorry, there was an error uploading your file.", 'type' => 'error'];
+//     }
+//   }
+// }
 
 
 
 if (isset($_POST['register'])) {
 $studid = mysqli_real_escape_string($conn, $_POST['studid']);
-  // $msg = uploadFile($_FILES);
+  // $msg = uploadFile($_FILES)
+  var_dump($_FILES);
+
   $filename = uploadS3($studid.$course.$yr.$sec.$ln,$_FILES["photo"]["tmp_name"]);
   $insert_code = "INSERT INTO `registered`(`qrcode`, `firstname`, `lastname`, `type`, `course`, `year`, `section`, `bday`, `email`, `address`, `pname`, `pcontact`, `photo`, `qrphoto`) 
   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
