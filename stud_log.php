@@ -9,7 +9,7 @@ $reg_id = mysqli_real_escape_string($conn, $_POST['code']);
 $name = mysqli_real_escape_string($conn, $_POST['name']);
 $log = mysqli_real_escape_string($conn, $_POST['type']);
 $subject = mysqli_real_escape_string($conn, $_POST['subject']);
-$type = 'Student';
+$type = mysqli_real_escape_string($conn, $_POST['type']);
 $timestamp = mysqli_real_escape_string($conn, $_POST['time']);
 
 $today = date('Y-m-d');

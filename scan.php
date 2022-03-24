@@ -115,6 +115,7 @@ if ($userData) {
                                 <input type="hidden" name="subject" value="<?php echo $subject; ?>">
                                 <input type="hidden" name="name" value="<?php echo $name; ?>">
                                 <input type="hidden" name="time" value="<?php echo $timestamp; ?>">
+                                <input type="hidden" name="type" value="<?php echo $type; ?>">
                                 <?php if ($title === 'logout') { ?>
                                     <input type="hidden" name="type" value="out">
                                     <td><button type="submit" class="btn bg-main text-white ">Accept</button></td>

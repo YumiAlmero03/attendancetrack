@@ -1,6 +1,6 @@
 <?php 
 require_once '../inc/session.php';
-if (!($_SESSION["level"] === 'admin')) { 
+if (!($_SESSION["level"] === 'admin' || $_SESSION["level"] === 'staff')) { 
    header("location: attendance.php");
 }
 require_once '../inc/head.php';

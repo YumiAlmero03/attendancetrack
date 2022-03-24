@@ -38,8 +38,10 @@ $num = $count->fetch_assoc();
           </div>
 
           <div class="float-right">
+            <?php if ($_SESSION["level"] === 'admin') { ?>
             <a class="btn bg-second text-white mb-2" href="register.php">Register</a>
             <!-- <a  class="btn bg-second text-white mb-2" data-toggle="modal" data-target="#reportModalClass">Create Class Representative</a> -->
+            <?php } ?>
           </div>
       </div>
     <table class="table">

@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
         <!-- left nav -->
         <ul class="navbar-nav ">
-          <?php if ($_SESSION["level"] === 'admin') { ?>
+          <?php if ($_SESSION["level"] === 'admin' || $_SESSION["level"] === 'staff') { ?>
           <li class="nav-item">
             <a class="nav-link <?= ($activePage == 'index') || ($activePage == '') ? 'active':''; ?>" href="index.php">Dashboard</a>
           </li>

@@ -108,7 +108,7 @@ $rows = $ar->fetch_all();
                 <div class="float-left">
                   <!-- <a  class="btn bg-second text-white px-5" data-toggle="modal" data-target="#reportModalAddAdmin">Create Admin</a>  -->
                   <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalAdd">Create Staff</a>
-                  <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalClass">Create Class</a>
+                  <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalClass">Create Class Representative</a>
                   <!-- <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalFaculty">Create Faculty</a> -->
                 </div>
 

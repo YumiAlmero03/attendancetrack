@@ -38,7 +38,9 @@ $num = $count->fetch_assoc();
           </div>
 
           <div class="float-right">
+            <?php if ($_SESSION["level"] === 'admin') { ?>
             <a class="btn bg-second text-white mb-2" href="addpersonel.php">Register</a>
+            <?php } ?>
           </div>
       </div>
     <table class="table">
@@ -66,7 +68,7 @@ $num = $count->fetch_assoc();
               $report = $getReport->fetch_assoc();
            ?>
           <td>
-            <a  class="btn bg-third text-white" data-toggle="modal" data-target="#reportModal<?php echo $value['0']; ?>">Report</a>
+            <!-- <a  class="btn bg-third text-white" data-toggle="modal" data-target="#reportModal<?php echo $value['0']; ?>">Report</a> -->
             <?php if ($_SESSION["level"] === 'admin') { ?>
             <a href="addpersonel.php?id=<?php echo $value['0']; ?>" class="btn bg-third text-white">Edit</a>
             <a href="regremove.php?id=<?php echo $value['0']; ?>" class="btn bg-third text-white">Delete</a>

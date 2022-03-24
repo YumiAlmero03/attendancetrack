@@ -140,7 +140,7 @@ if (isset($_GET['id'])) {
 	      	<?php
 	      	}
 	      ?>
-	      <a href="registered.php" class="btn bg-second text-white">Cancel</a>
+	      <a href="personel.php" class="btn bg-second text-white">Cancel</a>
 	</form>
 </div>
 </div>

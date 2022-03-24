@@ -9,9 +9,9 @@ $text = "PRODUCT ID 23456";
  
 function upload_qr($text, $filename)
 {
-	$fileName = $filename.'.png'; 
-	$tempDir = "/";                   
-	$filePath = $tempDir . "/" . $fileName;
+	$fileName = $filename.'.png';                  
+	$filePath = $fileName;
+	QRcode::png($text, $fileName); 
 
 	require 'vendor/autoload.php';
 
@@ -29,7 +29,6 @@ function upload_qr($text, $filename)
 		'Key'    => 'files/qr-'.$fileName,
 		'SourceFile' => $filePath			
 		]);
-	QRcode::png($text, $result['ObjectURL']); 
 	return $result['ObjectURL'];
 
 }
