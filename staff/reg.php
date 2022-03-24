@@ -23,49 +23,50 @@ $target_file = $target_dir . basename($_FILES["photo"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["photo"]["tmp_name"]);
-  if($check !== false) {
-    $msg =  "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    $msg =  "File is not an image.";
-    $uploadOk = 0;
-  }
-}
+// // Check if image file is a actual image or fake image
+// if(isset($_POST["submit"])) {
+//   $check = getimagesize($_FILES["photo"]["tmp_name"]);
+//   if($check !== false) {
+//     $msg =  "File is an image - " . $check["mime"] . ".";
+//     $uploadOk = 1;
+//   } else {
+//     $msg =  "File is not an image.";
+//     $uploadOk = 0;
+//   }
+// }
 
-// Check if file already exists
-if (file_exists($target_file)) {
-  $msg =  "Sorry, file already exists.";
-  $uploadOk = 0;
-}
+// // Check if file already exists
+// if (file_exists($target_file)) {
+//   $msg =  "Sorry, file already exists.";
+//   $uploadOk = 0;
+// }
 
-// Check file size
-if ($_FILES["photo"]["size"] > 500000) {
-  $msg =  "Sorry, your file is too large.";
-  $uploadOk = 0;
-}
+// // Check file size
+// if ($_FILES["photo"]["size"] > 500000) {
+//   $msg =  "Sorry, your file is too large.";
+//   $uploadOk = 0;
+// }
 
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  $msg =  "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-  $uploadOk = 0;
-}
+// // Allow certain file formats
+// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+// && $imageFileType != "gif" ) {
+//   $msg =  "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//   $uploadOk = 0;
+// }
 
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-  // $msg =  "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-  if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
-    $msg =  "The file ". htmlspecialchars( basename( $_FILES["photo"]["name"])). " has been uploaded.";
-  } else {
-    $msg = "Sorry, there was an error uploading your file.";
-  }
-}
+// // Check if $uploadOk is set to 0 by an error
+// if ($uploadOk == 0) {
+//   // $msg =  "Sorry, your file was not uploaded.";
+// // if everything is ok, try to upload file
+// } else {
+//   if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+//     $msg =  "The file ". htmlspecialchars( basename( $_FILES["photo"]["name"])). " has been uploaded.";
+//   } else {
+//     $msg = "Sorry, there was an error uploading your file.";
+//   }
+// }
 // upload end
+  $filename = uploadS3($_FILES["photo"]["name"],$_FILES["photo"]["tmp_name"]);
 
 
 $insert_code = "INSERT INTO `registered`(`qrcode`, `firstname`, `lastname`, `type`, `course`, `year`, `section`, `bday`, `email`, `address`, `pname`, `pcontact`, `photo`, `qrphoto`) 
@@ -78,7 +79,7 @@ if(!mysqli_stmt_prepare($stmt, $insert_code)){
 }
 else{
 	$qrfile = upload_qr($studid);
-    mysqli_stmt_bind_param($stmt, "ssssssssssssss", $studid, $fn, $ln, $type, $course, $yr, $sec, $bday, $email, $add, $pname, $pnum, $target_file, $qrfile);
+    mysqli_stmt_bind_param($stmt, "ssssssssssssss", $studid, $fn, $ln, $type, $course, $yr, $sec, $bday, $email, $add, $pname, $pnum, $filename, $qrfile);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 

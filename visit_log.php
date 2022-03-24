@@ -22,13 +22,13 @@ $img = $_POST['image'];
     $image_base64 = base64_decode($image_parts[1]);
     $fileName = uniqid() . '.png';
   
-    $file = $folderPath . $fileName;
-    file_put_contents($file, $image_base64);
+    $file = uploadS3($fileName,$_POST['image']);
+    ;
 
 $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo,type) VALUES ('$name','$purpose','$address','$email','$passnum','$file','$type')";
     mysqli_query($conn,$insert_visit);
     $getID = mysqli_insert_id($conn);
-    $insert_code = "INSERT INTO `login` (`name`, `type`, `reg_id`, `date`) VALUES (?,?,?,?)";
+    $insert_code = "INSERT INTO `login` (`name`, `type`, `reg_id`, `date`, `login`) VALUES (?,?,?,?,?)";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -36,11 +36,11 @@ $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo
         $msg = "Registration Failed!";
     }
     else{
-        mysqli_stmt_bind_param($stmt, "ssss", $name, $type,$getID,$today);
+        mysqli_stmt_bind_param($stmt, "sssss", $name, $type,$getID,$today,$time);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
     }
-    header("location: index.php");
+    // header("location: index.php");
     
  ?>
