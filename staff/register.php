@@ -69,7 +69,7 @@ require_once '../inc/db.php';
 	    </div>
 	    <div class="form-group col-md-6">
 	      <label for="inPNum">Parent’s Contact Number</label>
-	      <input name="pnum" type="text" class="form-control" id="inPNum" max="11" min="7">
+	      <input name="pnum" type="text" class="form-control" id="inPNum">
 	    </div>
 	  </div>
 	  <div class="form-row">

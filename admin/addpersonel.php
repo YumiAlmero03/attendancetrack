@@ -115,7 +115,7 @@ if (isset($_GET['id'])) {
 	    </div>
 	    <div class="form-group col-md-6">
 	      <label for="inPNum">Contact Number</label>
-	      <input name="pnum" type="number" class="form-control" id="inPNum" max="11" min="7" required value="<?php echo $pnum; ?>">
+	      <input name="pnum" type="number" class="form-control" id="inPNum" required value="<?php echo $pnum; ?>">
 	    </div>
 	  </div>
 	  <div class="form-row">
