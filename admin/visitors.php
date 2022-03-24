@@ -93,7 +93,7 @@ $visitors = $visitor->fetch_all();
                                         <button type="button" class="btn bg-second text-white mt-5" data-dismiss="modal">Back</button>
                                   </div>
                                   <div class="form-group col-md-6">
-                                    <img src="../<?php echo $value['6']; ?>" width="100%">
+                                    <img src="/<?php echo $value['6']; ?>" width="100%">
                                   </div>
                                 </div>
                               </div>
