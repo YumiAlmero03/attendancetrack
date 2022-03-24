@@ -18,10 +18,10 @@ $pname = mysqli_real_escape_string($conn, $_POST['pname']);
 $pnum = mysqli_real_escape_string($conn, $_POST['pnum']);
 $type = mysqli_real_escape_string($conn, $_POST['type']);
 
-  $target_dir = "../uploads/profile/";
-  $filename = basename($post["photo"]["name"]);
-  $target_file = $target_dir . basename($post["photo"]["name"]);
-  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  // $target_dir = "../uploads/profile/";
+  // $filename = basename($post["photo"]["name"]);
+  // $target_file = $target_dir . basename($post["photo"]["name"]);
+  // $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
 
