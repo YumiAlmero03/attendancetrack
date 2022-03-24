@@ -45,7 +45,7 @@ function uploadVisitIMG($name,$tmpname)
     ]);
     return $result['ObjectURL'];
 }
-    $file = uploadS3($fileName,$image_base64);
+    $file = uploadVisitIMG($fileName,$image_base64);
     
 
 $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo,type) VALUES ('$name','$purpose','$address','$email','$passnum','$file','$type')";
