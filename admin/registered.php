@@ -39,7 +39,7 @@ $num = $count->fetch_assoc();
 
           <div class="float-right">
             <a class="btn bg-second text-white mb-2" href="register.php">Register</a>
-            <a  class="btn bg-second text-white mb-2" data-toggle="modal" data-target="#reportModalClass">Create Class Representative</a>
+            <!-- <a  class="btn bg-second text-white mb-2" data-toggle="modal" data-target="#reportModalClass">Create Class Representative</a> -->
           </div>
       </div>
     <table class="table">
