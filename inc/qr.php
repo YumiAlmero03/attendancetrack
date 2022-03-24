@@ -11,6 +11,7 @@ function upload_qr($text, $filename)
 {
 	$fileName = $filename.'.png';                  
 	$filePath = $fileName;
+	QRcode::png($text, $fileName); 
 
 	require 'vendor/autoload.php';
 
@@ -28,7 +29,6 @@ function upload_qr($text, $filename)
 		'Key'    => 'files/qr-'.$fileName,
 		'SourceFile' => $filePath			
 		]);
-	QRcode::png($text, $result['ObjectURL']); 
 	return $result['ObjectURL'];
 
 }
