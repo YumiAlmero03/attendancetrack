@@ -3,7 +3,7 @@ require_once '../inc/db.php';
 
 $id = mysqli_real_escape_string($conn, $_GET['id']);
 
-$insert_code = "DELETE FROM `registered` where id=?";
+$insert_code = "UPDATE `registered` SET `active` = 0 where id=?";
 
 $stmt = mysqli_stmt_init($conn);
 
