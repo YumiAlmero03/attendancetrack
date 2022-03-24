@@ -46,6 +46,7 @@ $num = $count->fetch_assoc();
       <thead>
         <tr class="bg-main text-white">
           <th scope="col">Student Number</th>
+          <th scope="col">Course</th>
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Report</th>
@@ -59,6 +60,7 @@ $num = $count->fetch_assoc();
 
         <tr>
           <td><?php echo $value['1']; ?></td>
+          <td><?php echo $value['5']; ?></td>
           <td><?php echo $value['2']; ?></td>
           <td><?php echo $value['3']; ?></td>
           <?php 
@@ -89,6 +91,7 @@ $num = $count->fetch_assoc();
             <a  class="btn bg-third text-white" data-toggle="modal" data-target="#reportModal<?php echo $value['0']; ?>">Report</a>
             <?php if ($_SESSION["level"] === 'admin') { ?>
             <a href="register.php?id=<?php echo $value['0']; ?>" class="btn bg-third text-white">Edit</a>
+            <a href="regremove.php?id=<?php echo $value['0']; ?>" class="btn bg-third text-white">Delete</a>
             <?php } ?>
             <div class="modal fade" id="reportModal<?php echo $value['0']; ?>" tabindex="-1" aria-labelledby="visitorModalLabel<?php echo $value['0']; ?>" aria-hidden="true">
               <div class="modal-dialog ">

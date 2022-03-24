@@ -21,7 +21,7 @@ $grCodeUri = $otp->getQrCodeUri(
     '[DATA]'
 );
 $otpcode = $otp->getSecret();
-$mailbody = 'You have been  registered in Student Management And Attendance Monitoring System as '.$level.' 
+$mailbody = 'You have been  registered in Student Management And Attendance Monitoring System as Staff 
 <br> 
 here is your login details:
 <br> 
@@ -70,7 +70,7 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         $_SESSION["info"] = "Registered!";
-      // header("location: users.php");
+      header("location: users.php");
     }
   }
   

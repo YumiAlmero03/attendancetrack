@@ -22,17 +22,17 @@ $username_err = $password_err = $login_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Check if username is empty
-    if(empty(trim($_POST["username"]))){
+    if(empty(($_POST["username"]))){
         $username_err = "Please enter username.";
     } else{
-        $username = trim($_POST["username"]);
+        $username = ($_POST["username"]);
     }
     
     // Check if password is empty
-    if(empty(trim($_POST["password"]))){
+    if(empty(($_POST["password"]))){
         $password_err = "Please enter your password.";
     } else{
-        $password = trim($_POST["password"]);
+        $password = ($_POST["password"]);
     }
     
     // Validate credentials
@@ -94,7 +94,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
-<body class="bg-half">
+<body class="bg-main-light">
 <?php 
 if (isset($_SESSION["error"])) {
   ?>
@@ -105,7 +105,7 @@ if (isset($_SESSION["error"])) {
 $_SESSION["error"] = null;
 }
  ?>
-<div class=" school-header  px-4" >
+<div class=" school-header bg-white px-4" >
   <div class="col-sm-4">
       <img class="align-left" src="../assets/logo.png" height="100px">
   </div>

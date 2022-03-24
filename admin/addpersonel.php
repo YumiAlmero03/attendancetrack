@@ -66,27 +66,33 @@ if (isset($_GET['id'])) {
 	    </div>
 	  </div>
 	  <div class="form-row">
-	    <div class="form-group col-md-4">
-	      <label for="inCourse">Course</label>
+	    <div class="form-group col-md-12">
+	      <label for="inCourse">Department</label>
 	      <select name="course" class="form-control" id="inCourse" required value="">
-	      	  <option disabled <?php isset($_GET['id']) ? '' :  print('selected')?>>Select Course</option>
-				<option value="BSA" <?php $course === 'BSA' ? print('selected') : ''?>>BS Accountancy</option>
-				<option value="BSBAFM" <?php $course === 'BSBAFM' ? print('selected') : ''?>>BSBA Financial Management</option>
-				<option value="BSEDUC" <?php $course === 'BSEDUC' ? print('selected') : ''?>>BS English</option>
-				<option value="BSENTREP" <?php $course === 'BSENTREP' ? print('selected') : ''?>>BS Entrepreneurship</option>
-				<option value="BSHM" <?php $course === 'BSHM' ? print('selected') : ''?>>BS Hospitality Management</option>
-				<option value="BSIT" <?php $course === 'BSIT' ? print('selected') : ''?>>BS Information Technology</option>
-		      	<option value="BSPSYCH" <?php $course === 'BSPSYCH' ? print('selected') : ''?>>BS Psychology</option>
+	      	  <option disabled <?php isset($_GET['id']) ? '' :  print('selected')?>>Select Department</option>
+				<option value="Faculty" <?php $course === 'Faculty' ? print('selected') : ''?>>Faculty</option>
+				<option value="IT" <?php $course === 'IT' ? print('selected') : ''?>>IT</option>
+				<option value="Registar" <?php $course === 'Registar' ? print('selected') : ''?>>Registar</option>
+				<option value="Accounting" <?php $course === 'Accounting' ? print('selected') : ''?>>Accounting</option>
+				<option value="Principal" <?php $course === 'Principal' ? print('selected') : ''?>>Principal</option>
+				<option value="Guidance" <?php $course === 'Guidance' ? print('selected') : ''?>>Guidance</option>
+		      	<option value="Library" <?php $course === 'Library' ? print('selected') : ''?>>Library</option>
+		      	<option value="Canteen" <?php $course === 'Canteen' ? print('selected') : ''?>>Canteen</option>
+		      	<option value="Clinic" <?php $course === 'Clinic' ? print('selected') : ''?>>Clinic</option>
+		      	<option value="Maintenance" <?php $course === 'Maintenance' ? print('selected') : ''?>>Maintenance</option>
 		    </select>
+	      <input name="yr" type="hidden" class="form-control" id="inYear" required value=" ">
+	      <input name="sec" type="hidden" class="form-control" id="inSection" required value=" ">
+
 	    </div>
-	    <div class="form-group col-md-4">
+	    <!-- <div class="form-group col-md-4">
 	      <label for="inYear">Year</label>
 	      <input name="yr" type="text" class="form-control" id="inYear" required value="<?php echo $yr; ?>">
 	    </div>
 	    <div class="form-group col-md-4">
 	      <label for="inSection">Section</label>
 	      <input name="sec" type="text" class="form-control" id="inSection" required value="<?php echo $sec; ?>">
-	    </div>
+	    </div> -->
 	  </div>
 	  <div class="form-row">
 	    <div class="form-group col-md-6">
@@ -104,18 +110,18 @@ if (isset($_GET['id'])) {
 	  </div>
 	  <div class="form-row">
 	    <div class="form-group col-md-6">
-	      <label for="inPName">Parent or Guardian’s Name</label>
+	      <label for="inPName">Contact person in case of emergency</label>
 	      <input name="pname" type="text" class="form-control" id="inPName" required value="<?php echo $pname; ?>">
 	    </div>
 	    <div class="form-group col-md-6">
-	      <label for="inPNum">Parent or Guardian’s Contact Number</label>
+	      <label for="inPNum">Contact Number</label>
 	      <input name="pnum" type="number" class="form-control" id="inPNum" minlength="11" maxlength="11" required value="<?php echo $pnum; ?>">
 	    </div>
 	  </div>
 	  <div class="form-row">
 	    <div class="form-group col-md-6">
-	      <label for="inStudID">Student ID</label>
-	      <input type="hidden" name="type" value="Student">
+	      <label for="inStudID">ID Number</label>
+	      <input type="hidden" name="type" value="Staff">
 	      <?php 
 	      	if (isset($_GET['id'])) {
 	      	?>
