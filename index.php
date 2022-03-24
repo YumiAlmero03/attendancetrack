@@ -89,7 +89,7 @@ $remain = array_diff($passnumchoice, $remove);
             <div class="form-row">
               <div class="form-group col-md-4">
                 <label for="visitorEmail">Contact Number:</label>
-                <input type="number" name="email" class="form-control" id="visitorEmail" required>
+                <input type="number" name="email" class="form-control" id="visitorEmail" required max="11" min="7">
               </div>
               <div class="form-group col-md-4">
                 <label for="visitorEmail">Pass Number:</label>

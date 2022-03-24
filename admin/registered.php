@@ -216,7 +216,7 @@ $num = $count->fetch_assoc();
                 </div>
                 <div class="form-group col-md-9">
                   <label for="email">Contact Number</label>
-                  <input name="meta[emergency_num]" type="text" class="form-control" id="num" required>
+                  <input name="meta[emergency_num]" type="text" class="form-control" id="num" max="11" min="7" required>
                 </div>
 
               </div> 

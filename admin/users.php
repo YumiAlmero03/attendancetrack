@@ -234,7 +234,7 @@ $rows = $ar->fetch_all();
                             </div>
                             <div class="form-group col-md-9">
                               <label for="email">Contact Number</label>
-                              <input name="meta[emergency_num]" type="text" class="form-control" id="num" required>
+                              <input name="meta[emergency_num]" max="11" min="7" type="text" class="form-control" id="num" required>
                             </div>
                           </div> 
                           <div class="form-row">
@@ -334,7 +334,7 @@ $rows = $ar->fetch_all();
                             </div>
                             <div class="form-group col-md-9">
                               <label for="email">Contact Number</label>
-                              <input name="meta[emergency_num]" type="text" class="form-control" id="num" required>
+                              <input name="meta[emergency_num]" type="text" class="form-control" max="11" min="7" id="num" required>
                             </div>
 
                           </div> 

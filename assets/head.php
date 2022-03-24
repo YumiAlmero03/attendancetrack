@@ -20,7 +20,7 @@
             <a class="nav-link <?= ($activePage == 'registered') || ($activePage == 'register') ? 'active':''; ?>" href="registered.php">Students</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?= ($activePage == 'personel') || ($activePage == 'addpersonel') ? 'active':''; ?>" href="personel.php">Personel</a>
+            <a class="nav-link <?= ($activePage == 'personel') || ($activePage == 'addpersonel') ? 'active':''; ?>" href="personel.php">Personnel </a>
           </li>
           <li class="nav-item">
             <a class="nav-link <?= ($activePage == 'visitors')  ? 'active':''; ?>" href="visitors.php">Visitor</a>
