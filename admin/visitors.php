@@ -90,13 +90,16 @@ $visitors = $visitor->fetch_all();
                                   <div class="form-group col-md-6">
                                     <label for="visitorName">Contact Number</label>
                                     <input readonly type="text" class="form-control" id="visitorName" value="<?php echo $value['4']; ?>" >
+                                        <button type="button" class="btn bg-second text-white mt-5" data-dismiss="modal">Back</button>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <img src="../<?php echo $value['6']; ?>" width="100%">
                                   </div>
                                 </div>
                               </div>
                               <div class="">
                                 <div class="row">
                                     <div class="col-sm-12 text-center">
-                                        <button type="button" class="btn bg-second text-white" data-dismiss="modal">Back</button>
                                     </div>
                                 </div>
                               </div>

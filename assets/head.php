@@ -14,23 +14,23 @@
             <a class="nav-link <?= ($activePage == 'index') || ($activePage == '') ? 'active':''; ?>" href="index.php">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?= ($activePage == 'logs') ?>" href="logs.php">Logs <span class="sr-only">(current)</span></a>
+            <a class="nav-link <?= ($activePage == 'logs') || ($activePage == 'log') ? 'active':''; ?>" href="logs.php">Logs <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item ">
             <a class="nav-link <?= ($activePage == 'registered') || ($activePage == 'register') ? 'active':''; ?>" href="registered.php">Students</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?= ($activePage == 'users') || ($activePage == 'useracc') ? 'active':''; ?>" href="users.php">Personel</a>
+            <a class="nav-link <?= ($activePage == 'personel') || ($activePage == 'addpersonel') ? 'active':''; ?>" href="personel.php">Personel</a>
           </li>
           <li class="nav-item">
             <a class="nav-link <?= ($activePage == 'visitors')  ? 'active':''; ?>" href="visitors.php">Visitor</a>
           </li>
           <?php } else { ?>
             <li class="nav-item">
-              <a class="nav-link <?= ($activePage == 'attendance') ?>" href="attendance.php">Attendance </a>
+              <a class="nav-link <?= ($activePage == 'attendance') || ($activePage == 'attendance') ? 'active':''; ?>" href="attendance.php">Attendance </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?= ($activePage == 'scan') ?>" href="scan.php">Login </a>
+              <a class="nav-link <?= ($activePage == 'scan') || ($activePage == 'scan') ? 'active':''; ?>" href="scan.php">Scan QR </a>
             </li>
           <?php } ?>
           <!-- <li class="nav-item dropdown">

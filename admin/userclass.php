@@ -135,7 +135,6 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
           $msg = uploadFile($_FILES);
           $filename =  $msg['filename'];
 
-        mailSend($email,$name,'User Created',$mailbody);
         mysqli_stmt_bind_param($stmt, "ssssssssssssss", $studid, $fn, $ln, $type, $course, $yr, $sec, $bday, $email, $add, $pname, $pnum, $filename, $qrfile);
         mysqli_stmt_execute($stmt);
         $reg_id = mysqli_stmt_insert_id($stmt);
@@ -153,6 +152,7 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
         }
         else{
             mailSend($email,$name,'User Created',$mailbody);
+            mailQR($email, $fn.' '.$ln, $qrfile, $course.$yr.$sec.$ln);
             mysqli_stmt_bind_param($stmt, "sssssss", $username, $password, $level, $name, $email,$otpcode,$reg_id );
             mysqli_stmt_execute($stmt);
             $id = mysqli_stmt_insert_id($stmt);

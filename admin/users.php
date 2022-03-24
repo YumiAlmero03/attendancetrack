@@ -105,49 +105,16 @@ $rows = $ar->fetch_all();
 
           <div id="visitor" class="tab-pane fade">
             <div class="search pb-5">
-                
-                <!-- <div class="float-right"><a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalAdd">Create User</a></div>
-
-                <div class="modal fade" id="reportModalAdd" tabindex="-1" aria-labelledby="visitorModalLabelAdd" aria-hidden="true">
-                  <div class="modal-dialog ">
-                    <div class="modal-content bg-third p-5">
-                      <div class="modal-header text-second text-center">
-                        <h4 class="modal-title text-center pb-3" id="visitorModalLabelAdd">Create User</h4>
-                      </div>
-                      <div class="modal-body">
-                        <form action="useracc.php" method="post" enctype="multipart/form-data">
-                          <div class="form-row">
-                            <div class="form-group col-md-12">
-                              <label for="username">Username</label>
-                              <input name="username" type="text" class="form-control" id="username" required>
-                            </div>
-                            <div class="form-group col-md-9">
-                              <label for="name">Full Name</label>
-                              <input name="name" type="text" class="form-control" id="name" required>
-                            </div>
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-9">
-                              <label for="pass">Password</label>
-                              <input type="hidden" name="level" value="admin">
-                              <input name="pass" type="password" class="form-control" id="pass" required>
-                            </div>
-                          </div>
-                          <button type="submit" class="btn bg-second text-white">Create</button>
-                        </form>
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
+                <div class="float-left">
+                  <!-- <a  class="btn bg-second text-white px-5" data-toggle="modal" data-target="#reportModalAddAdmin">Create Admin</a>  -->
+                  <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalAdd">Create Staff</a>
+                  <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalClass">Create Class</a>
+                  <!-- <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalFaculty">Create Faculty</a> -->
+                </div>
 
 
                 <div class="float-right">
                   <a href="backup.php" class="btn bg-second text-white px-5" >Backup DB</a> 
-                  <a  class="btn bg-second text-white px-5" data-toggle="modal" data-target="#reportModalAddAdmin">Create Admin</a> 
-                  <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalAdd">Create Staff</a>
-                  <!-- <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalClass">Create Class</a> -->
-                  <a  class="btn bg-second text-white" data-toggle="modal" data-target="#reportModalFaculty">Create Faculty</a>
                 </div>
 
                 <div class="modal fade" id="reportModalAdd" tabindex="-1" aria-labelledby="visitorModalLabelAdd" aria-hidden="true">
@@ -158,7 +125,7 @@ $rows = $ar->fetch_all();
                       </div>
                       <div class="modal-body">
                         <h3 class="modal-title pb-3" id="visitorModalLabelAdd">Access Level: Staff</h3>
-                        <form action="userclass.php" method="post" enctype="multipart/form-data">
+                        <form action="useracc.php" method="post" enctype="multipart/form-data">
                           <div class="form-row">
                             <div class="form-group col-md-9">
                               <label for="username">Username</label>
@@ -171,34 +138,6 @@ $rows = $ar->fetch_all();
                             <div class="form-group col-md-9">
                               <label for="email">Email</label>
                               <input name="email" type="text" class="form-control" id="email" required>
-                            </div>
-                            <div class="form-group col-md-9">
-                              <label for="email">ID number</label>
-                              <input name="meta[id_num]" type="text" class="form-control" id="email" required>
-                            </div>
-                            <div class="form-group col-md-9">
-                              <label for="email">Department</label>
-                              <input name="meta[department]" type="text" class="form-control" id="email" required>
-                            </div>
-                            <div class="form-group col-md-9">
-                              <label for="email">Address</label>
-                              <input name="meta[address]" type="text" class="form-control" id="email" required>
-                            </div>
-                            <div class="form-group col-md-9">
-                              <label for="email">Contact number</label>
-                              <input name="meta[contact_num]" type="text" class="form-control" id="email" required>
-                            </div>
-                            <div class="form-group col-md-9">
-                              <label for="email">Birthdate</label>
-                              <input name="meta[bday]" type="date" class="form-control" id="email" required>
-                            </div>
-                            <div class="form-group col-md-9">
-                              <label for="email">Contact person in case of Emergency</label>
-                              <input name="meta[emergency]" type="text" class="form-control" id="email" required>
-                            </div>
-                            <div class="form-group col-md-9">
-                              <label for="email">Contact Number</label>
-                              <input name="meta[emergency_num]" type="text" class="form-control" id="email" required>
                             </div>
                           </div>
                           <div class="form-row">
@@ -216,7 +155,7 @@ $rows = $ar->fetch_all();
                   </div>
                 </div>
                 
-                <div class="modal fade" id="reportModalFaculty" tabindex="-1" aria-labelledby="visitorModalLabelAdd" aria-hidden="true">
+                <!-- <div class="modal fade" id="reportModalFaculty" tabindex="-1" aria-labelledby="visitorModalLabelAdd" aria-hidden="true">
                   <div class="modal-dialog ">
                     <div class="modal-content bg-third p-5">
                       <div class="modal-header text-second text-center">
@@ -311,8 +250,109 @@ $rows = $ar->fetch_all();
                       </div>
                     </div>
                   </div>
+                </div> -->
+                <div class="modal fade" id="reportModalClass" tabindex="-1" aria-labelledby="visitorModalLabelAdd" aria-hidden="true">
+                  <div class="modal-dialog ">
+                    <div class="modal-content bg-third p-5">
+                      <div class="modal-header text-second text-center">
+                        <h3 class="modal-title text-center " id="visitorModalLabelAdd">Create User</h3>
+                      </div>
+                      <div class="modal-body">
+                        <h3 class="modal-title pb-3" id="visitorModalLabelAdd">Access Level: Class Representative</h3>
+                        <form action="userclass.php" method="post" enctype="multipart/form-data">
+                          <div class="form-row">
+                            <div class="float-left text-center">
+                                <img id="previewClass" src="<?php echo $photo ?>" alt="your image" width="190px"/>
+                                <label class="btn bg-second text-white pt-2 btn-block m-0" for="photo">Choose File</label>
+                                <?php 
+                                  if (isset($_GET['id'])) {
+                                  ?>
+                                <input  type='file' onchange="readURLClass(this);" id="photo" name="photo" accept="image/*" />
+                                  <?php
+                                  } else {
+                                  ?> 
+                                <input  type='file' onchange="readURLClass(this);" id="photo" name="photo" accept="image/*" required />
+                                <?php
+                                  }
+                                ?>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="username">Username</label>
+                              <input name="username" type="text" class="form-control" id="username" required>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="username">Class Representative (name)</label>
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label for="name">First Name</label>
+                              <input name="fn" type="text" class="form-control" id="fn" required>
+                            </div>
+                            <div class="form-group col-md-5">
+                              <label for="name">Last Name</label>
+                              <input name="ln" type="text" class="form-control" id="ln" required>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="email">Email</label>
+                              <input name="email" class="form-control" id="email" value="studentmngmt@gmail.com" required>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="email">Course</label>
+                              <select name="meta[course]" class="form-control" id="inCourse" required value="">
+                                    <option disabled >Select Course</option>
+                                    <option value="BSA" >BS Accountancy</option>
+                                    <option value="BSBAFM" >BSBA Financial Management</option>
+                                    <option value="BSEDUC" >BS English</option>
+                                    <option value="BSENTREP" >BS Entrepreneurship</option>
+                                    <option value="BSHM" >BS Hospitality Management</option>
+                                    <option value="BSIT" >BS Information Technology</option>
+                                    <option value="BSPSYCH" >BS Psychology</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="email">Year</label>
+                              <input name="meta[yr]" type="text" class="form-control" id="num" required>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="email">Section</label>
+                              <input name="meta[sec]" type="text" class="form-control" id="num" required>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="email">Student Number</label>
+                              <input name="meta[stud_num]" type="text" class="form-control" id="num" required>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="email">Birthday</label>
+                              <input name="meta[bday]" type="date" class="form-control" id="num" required>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="email">Address</label>
+                              <input name="meta[address]" type="text" class="form-control" id="num" required>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="email">Contact person in case of Emergency</label>
+                              <input name="meta[emergency]" type="text" class="form-control" id="num" required>
+                            </div>
+                            <div class="form-group col-md-9">
+                              <label for="email">Contact Number</label>
+                              <input name="meta[emergency_num]" type="text" class="form-control" id="num" required>
+                            </div>
+
+                          </div> 
+                          <div class="form-row">
+                            <div class="form-group col-md-9">
+                              <label for="pass">Password</label>
+                              <input type="hidden" name="level" value="class">
+                              <input name="pass" type="password" class="form-control" id="pass" required>
+                            </div>
+                          </div>
+                          <button type="submit" class="btn bg-second text-white">Create</button>
+                        </form>
+                        
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="modal fade" id="reportModalAddAdmin" tabindex="-1" aria-labelledby="visitorModalLabelAdd" aria-hidden="true">
+                <!-- <div class="modal fade" id="reportModalAddAdmin" tabindex="-1" aria-labelledby="visitorModalLabelAdd" aria-hidden="true">
                   <div class="modal-dialog ">
                     <div class="modal-content bg-third p-5">
                       <div class="modal-header text-second text-center">
@@ -348,7 +388,7 @@ $rows = $ar->fetch_all();
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
 
             </div>
             <table class="table">
@@ -450,7 +490,7 @@ $rows = $ar->fetch_all();
 </div>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   function readURLClass(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -465,6 +505,23 @@ $rows = $ar->fetch_all();
             reader.readAsDataURL(input.files[0]);
         }
     }
+</script> -->
+<script type="text/javascript">
+    function readURLClass(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#previewClass')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
 </script>
 <?php 
 require_once '../inc/bottom.php';

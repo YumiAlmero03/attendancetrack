@@ -7,7 +7,7 @@ $username =  $_SESSION["username"];
  ?>
 
 
-<body class="bg-half">
+<body class="bg-main-light">
 <?php 
 if (isset($_SESSION["error"])) {
   ?>
@@ -18,7 +18,7 @@ if (isset($_SESSION["error"])) {
 $_SESSION["error"] = null;
 }
  ?>
-<div class=" school-header  px-4" >
+<div class=" school-header bg-white px-4" >
   <div class="col-sm-4">
       <img class="align-left" src="../assets/logo.png" height="100px">
   </div>
