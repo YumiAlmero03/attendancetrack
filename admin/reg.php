@@ -17,15 +17,15 @@ $add = mysqli_real_escape_string($conn, $_POST['add']);
 $pname = mysqli_real_escape_string($conn, $_POST['pname']);
 $pnum = mysqli_real_escape_string($conn, $_POST['pnum']);
 $type = mysqli_real_escape_string($conn, $_POST['type']);
+
+  $target_dir = "../uploads/profile/";
+  $filename = basename($post["photo"]["name"]);
+  $target_file = $target_dir . basename($post["photo"]["name"]);
+  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // function uploadFile($post)
 // {
   
 //   // photoupload
-//   $target_dir = "../uploads/profile/";
-//   $filename = basename($post["photo"]["name"]);
-//   $target_file = $target_dir . basename($post["photo"]["name"]);
-//   $uploadOk = 1;
-//   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 //   // Check if image file is a actual image or fake image
 //   $check = getimagesize($post["photo"]["tmp_name"]);
@@ -70,7 +70,7 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
   // $msg = uploadFile($_FILES)
   // var_dump($_FILES);
 
-  $filename = uploadS3($studid.$course.$yr.$sec.$ln,$_FILES["photo"]["tmp_name"]);
+  $filename = uploadS3($studid.$course.$yr.$sec.$ln.'.'.$imageFileType,$_FILES["photo"]["tmp_name"]);
   $insert_code = "INSERT INTO `registered`(`qrcode`, `firstname`, `lastname`, `type`, `course`, `year`, `section`, `bday`, `email`, `address`, `pname`, `pcontact`, `photo`, `qrphoto`) 
   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -101,7 +101,7 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
   $qrfile = $registered['qrphoto'];
     $filename = $registered['photo'];
     if ($_FILES['photo']['name'] != '') {
-        $filename = uploadS3($studid.$course.$yr.$sec.$ln,$_FILES["photo"]["tmp_name"]);
+        $filename = uploadS3($studid.$course.$yr.$sec.$ln.'.'.$imageFileType,$_FILES["photo"]["tmp_name"]);
         // $msg = uploadFile($_FILES);
         // $filename =  $msg['filename'];
     }
