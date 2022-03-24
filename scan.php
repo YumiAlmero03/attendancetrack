@@ -48,13 +48,20 @@ if ($userData) {
             </div>
             <div class="row p-5 border-third m-3 ">
                 <div class="col-sm-4 float-right text-center">
-                    <img src="uploads/profile/<?php echo $photo; ?>" width='300px'>
+                    <img src="<?php echo $photo; ?>" width='300px'>
 
                             <td colspan="3">
                                 <h2 class="m-0">
                                     <?php echo $name; ?>
                                 </h2>
-                                    <?php echo $course.' '.$year.'-'.$section; ?>
+                                    <?php 
+                                    if ($type === 'Staff') {
+                                        echo $course.' Department'; 
+                                    } else {
+
+                                        echo $course.' '.$year.'-'.$section; 
+                                    }
+                                    ?>
                             </td>
                 </div>
                 <div class="col-sm-8">
