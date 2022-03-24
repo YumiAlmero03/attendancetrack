@@ -44,11 +44,10 @@ $num = $count->fetch_assoc();
     <table class="table">
       <thead>
         <tr class="bg-main text-white">
-          <th scope="col">Student Number</th>
-          <th scope="col">Course</th>
+          <th scope="col">ID Number</th>
+          <th scope="col">Office</th>
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
-          <th scope="col">Report</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -66,13 +65,6 @@ $num = $count->fetch_assoc();
               $getReport = mysqli_query($conn, "SELECT * FROM `report` where not remove=1 and reg_id=".$value['0']);
               $report = $getReport->fetch_assoc();
            ?>
-          <td>
-             <?php 
-             if ($report) {
-               echo $report['report'];
-             }
-              ?>
-          </td>
           <td>
             <a  class="btn bg-third text-white" data-toggle="modal" data-target="#reportModal<?php echo $value['0']; ?>">Report</a>
             <?php if ($_SESSION["level"] === 'admin') { ?>
