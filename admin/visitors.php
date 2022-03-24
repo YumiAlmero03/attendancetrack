@@ -59,7 +59,7 @@ $visitors = $visitor->fetch_all();
                 <tr>
                   <td><?php echo $value['0']; ?></td>
                   <td><?php echo $value['1']; ?></td>
-                  <td><?php echo $data['type']; ?></td>
+                  <td><?php echo $value['7']; ?></td>
                   <td><?php echo $value['2']; ?></td>
                   <td>
                     <a  class="btn bg-third text-white" data-toggle="modal" data-target="#reportModal<?php echo $value['0']; ?>">View</a>
