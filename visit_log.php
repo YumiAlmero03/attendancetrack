@@ -46,7 +46,8 @@ function uploadVisitIMG($name,$tmpname)
     $result = $s3->putObject([
         'Bucket' => 'onsitelogbook-files',
         'Key'    => $file_name,
-        'SourceFile' => $temp_file_location         
+        'Body' => $temp_file_location,
+        'ContentType' => 'image/' . $image_type,        
     ]);
     return $result['ObjectURL'];
 }
