@@ -37,13 +37,13 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         mailQR($email, $fn.' '.$ln, $qrfile, $course.$yr.$sec.$ln);
-        if ($type === 'Staff') {
-          header("location: personel.php");
+        // if ($type === 'Staff') {
+        //   header("location: personel.php");
 
-        } else {
-            header("location: registered.php");
+        // } else {
+        //     header("location: registered.php");
 
-        }
+        // }
       $_SESSION["info"] = "Registered!";
     // } else {
     //    $_SESSION["error"] = $msg['msg'];

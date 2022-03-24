@@ -319,7 +319,7 @@ $rows = $ar->fetch_all();
                             <div class="form-group col-md-9">
                               <label for="email">Student Number</label>
                               <input name="meta[stud_num]" type="text" class="form-control" id="num" required>
-                            </div>
+                            </div><!-- 
                             <div class="form-group col-md-9">
                               <label for="email">Birthday</label>
                               <input name="meta[bday]" type="date" class="form-control" id="num" required>
@@ -335,7 +335,7 @@ $rows = $ar->fetch_all();
                             <div class="form-group col-md-9">
                               <label for="email">Contact Number</label>
                               <input name="meta[emergency_num]" type="text" class="form-control" id="num" required>
-                            </div>
+                            </div> -->
 
                           </div> 
                           <div class="form-row">

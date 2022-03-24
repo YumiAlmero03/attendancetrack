@@ -128,13 +128,17 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
           $sec = null;
           $qrfile = upload_qr($studid, $studid.$course.$ln);
         }
-          $bday = $_POST['meta']['bday'];
-          $add = $_POST['meta']['address'];
-          $pname = $_POST['meta']['emergency'];
-          $pnum = $_POST['meta']['emergency_num'];
+          // $bday = $_POST['meta']['bday'];
+          // $add = $_POST['meta']['address'];
+          // $pname = $_POST['meta']['emergency'];
+          // $pnum = $_POST['meta']['emergency_num'];
+          $bday = '';
+          $add = '';
+          $pname = '';
+          $pnum = '';
           // $msg = uploadFile($_FILES);
-          $filename =  $msg['filename'];
-          $filename = uploadS3($post["photo"]["name"],$post["photo"]["tmp_name"]);
+          // $filename =  $msg['filename'];
+          $filename = uploadS3($studid.$sec.$ln.'-profile.png',$_FILES["photo"]["tmp_name"]);
 
         mysqli_stmt_bind_param($stmt, "ssssssssssssss", $studid, $fn, $ln, $type, $course, $yr, $sec, $bday, $email, $add, $pname, $pnum, $filename, $qrfile);
         mysqli_stmt_execute($stmt);
@@ -149,7 +153,6 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
 
         if(!mysqli_stmt_prepare($stmt, $insert_code)){
             $_SESSION["error"] = "Registration Failed!";
-          header("location: users.php");
         }
         else{
             mailSend($email,$name,'User Created',$mailbody);
@@ -165,7 +168,7 @@ if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}
         // mysqli_stmt_close($stmt);
 
         $_SESSION["info"] = "Registered!";
-      header("location: users.php");
+      // header("location: users.php");
     }
   }
   

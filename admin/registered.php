@@ -7,14 +7,14 @@ require_once '../inc/db.php';
 
 if (isset($_GET['name'])) {
   $name = $_GET['name'];
-  $ar = mysqli_query($conn, "SELECT * FROM registered where lastname like '%$name%'  WHERE type='Student'");
+  $ar = mysqli_query($conn, "SELECT * FROM registered where lastname like '%$name%'  and active=1 WHERE type='Student'");
 } else {
-  $ar = mysqli_query($conn, "SELECT * FROM registered WHERE type='Student' limit 50 ");
+  $ar = mysqli_query($conn, "SELECT * FROM registered WHERE type='Student' and active=1 limit 50 ");
 }
 $photo = '../assets/pup.png';
 
 $rows = $ar->fetch_all();
-$count = mysqli_query($conn, "SELECT count(*) as count FROM registered WHERE type='Student'");
+$count = mysqli_query($conn, "SELECT count(*) as count FROM registered WHERE type='Student' and active=1");
 $num = $count->fetch_assoc();
 ?>
 <div class="bg-main-light">
