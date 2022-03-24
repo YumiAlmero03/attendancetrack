@@ -70,7 +70,7 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
   // $msg = uploadFile($_FILES)
   // var_dump($_FILES);
 
-  $filename = uploadS3($studid.$course.$yr.$sec.$ln.'.'.$imageFileType,$_FILES["photo"]["tmp_name"]);
+  $filename = uploadS3($studid.$course.$yr.$sec.$ln.'.png',$_FILES["photo"]["tmp_name"]);
   $insert_code = "INSERT INTO `registered`(`qrcode`, `firstname`, `lastname`, `type`, `course`, `year`, `section`, `bday`, `email`, `address`, `pname`, `pcontact`, `photo`, `qrphoto`) 
   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -101,7 +101,7 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
   $qrfile = $registered['qrphoto'];
     $filename = $registered['photo'];
     if ($_FILES['photo']['name'] != '') {
-        $filename = uploadS3($studid.$course.$yr.$sec.$ln.'.'.$imageFileType,$_FILES["photo"]["tmp_name"]);
+        $filename = uploadS3($studid.$course.$yr.$sec.$ln.'.png',$_FILES["photo"]["tmp_name"]);
         // $msg = uploadFile($_FILES);
         // $filename =  $msg['filename'];
     }
