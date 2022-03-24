@@ -19,7 +19,7 @@ $img = $_POST['image'];
     $image_type_aux = explode("image/", $image_parts[0]);
     $image_type = $image_type_aux[1];
   
-    $image_base64 = base64_decode(end(explode(",", $image_parts)));
+    $image_base64 = base64_decode(end(explode(",", $img)));
     $fileName = uniqid() . '.png';
 function uploadVisitIMG($name,$tmpname)
 {
