@@ -130,8 +130,8 @@ $_SESSION["error"] = null;
       </ul>
     </div>
 </nav>
-<div class="p-5 m-5">
-    <div class="container p-5  bg-main form-main">
+<div class="pt-5 mt-5">
+    <div class="container pt-5  bg-main form-main">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <h2 class="text-center text-white">Welcome!</h2>
         <p class="text-center p-2">Please fill in your credentials to login.</p>
