@@ -19,7 +19,7 @@ $img = $_POST['image'];
     $image_type_aux = explode("image/", $image_parts[0]);
     $image_type = $image_type_aux[1];
   
-    $image_base64 = base64_decode($image_parts[1]);
+    $image_base64 = base64_decode(end(explode(",", $image_parts)));
     $fileName = uniqid() . '.png';
 function uploadVisitIMG($name,$tmpname)
 {
@@ -46,6 +46,7 @@ function uploadVisitIMG($name,$tmpname)
     return $result['ObjectURL'];
 }
     var_dump($fileName);
+    var_dump('jddj');
     $file = uploadVisitIMG($fileName,$image_base64);
     
 
