@@ -22,7 +22,7 @@ $img = $_POST['image'];
     $image_base64 = base64_decode($image_parts[1]);
     $fileName = uniqid() . '.png';
   
-    $file = uploadS3($fileName,$_POST['image']);
+    $file = uploadS3($fileName,$image_base64);
     ;
 
 $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo,type) VALUES ('$name','$purpose','$address','$email','$passnum','$file','$type')";
