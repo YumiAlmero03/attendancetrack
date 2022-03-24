@@ -5,7 +5,7 @@
   </div>
   <div class="col-sm-4  ">
     <div class="text-center">
-      <h3>Attendance Monitoring System</h3>
+      <h3>On-site Logbook System</h3>
     </div>
   </div>
   <div class="col-sm-4  ">

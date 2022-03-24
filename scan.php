@@ -43,43 +43,34 @@ if ($userData) {
 <body class="bg-main-light">
 <div class="bg-main-light">
     <div class="container pb-5">
-            <div class="text-center">
-                <img src="assets/pup.png" width="100px" class="mt-3">
+            <div class="p-4 text-center">
+                
             </div>
             <div class="row p-5 border-third m-3 ">
-                <div class="col-sm-4 float-right">
+                <div class="col-sm-4 float-right text-center">
                     <img src="uploads/profile/<?php echo $photo; ?>" width='300px'>
+
+                            <td colspan="3">
+                                <h2 class="m-0">
+                                    <?php echo $name; ?>
+                                </h2>
+                                    <?php echo $course.' '.$year.'-'.$section; ?>
+                            </td>
                 </div>
                 <div class="col-sm-8">
+                    <img src="assets/pup.png" width="100px" class="absolute-right">
                     <table class="table table-borderless">
                         <tr>
                             <th>
                                 <?php if ($title === 'logout') { ?>
-                                <h2 class="">Good bye</h2>                
+                                <h1 class=" text-second">Good bye!</h1>                
 
                                 <?php } else { ?>
-                                <h2 class="">Welcome</h2>                
+                                <h1 class=" text-second">Welcome!</h1>                
                                 <?php } ?>
                                 
                             </th>
-                            <td colspan="3">
-                                <h3 class="m-0">
-                                    <?php echo $name; ?>
-                                </h3>
-                                    <?php echo $course.' '.$year.'-'.$section; ?>
-                            </td>
                             
-                        </tr>
-                        <tr>
-                            <td colspan='2'>
-                                <?php  if(isset($report['report'])){
-                                    echo '<i class="text-error h3"><b>REPORT: '.$report['report'].'</b></i>';
-                                } else {
-                                    echo '<i class="">REPORT: NONE</i>';
-                                }
-                                ?>
-                                
-                            </td>
                         </tr>
                         <?php if ($subject != 'Entry') { ?>
                         <tr>
@@ -90,16 +81,33 @@ if ($userData) {
                         </tr>
                         <?php } ?>
                         <tr>
-                            <td>TIME-IN:</td>
+                            <td><b>TIME-IN:</b></td>
                             <td><?php echo $loggedin; ?></td>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
                         </tr>
                         <tr>
-                            <td>TIME-OUT:</td>
+                            <td><b>TIME-OUT:</b></td>
                             <td><?php echo $loggedout; ?></td>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>
+                                <h3 class="text-error m-0">Notice</h3>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>
+                                <?php  if(isset($report['report'])){
+                                    echo '<p class=" "> '.$report['report'].'</p>';
+                                } else {
+                                    echo '<p class="">NONE</p>';
+                                }
+                                ?>
+                                
+                            </td>
                         </tr>
                         <tr>
                             <form action="stud_log.php" method="post">
@@ -109,12 +117,12 @@ if ($userData) {
                                 <input type="hidden" name="time" value="<?php echo $timestamp; ?>">
                                 <?php if ($title === 'logout') { ?>
                                     <input type="hidden" name="type" value="out">
-                                    <td><button type="submit" class="btn bg-main text-white ">Logout</button></td>
+                                    <td><button type="submit" class="btn bg-main text-white ">Accept</button></td>
                                 <?php } else { ?>
                                     <input type="hidden" name="type" value="in">
-                                    <td><button type="submit" class="btn bg-main text-white ">Login</button></td>
+                                    <td><button type="submit" class="btn bg-main text-white ">Accept</button></td>
                                 <?php } ?>
-                                <td><a href="index.php" class="btn bg-danger text-white ">Cancel</a></td>                                
+                                <td><a href="index.php" class="btn bg-danger text-white ">Decline</a></td>                                
                             </form>
                         </tr>
                     </table>

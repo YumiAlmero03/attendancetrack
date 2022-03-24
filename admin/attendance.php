@@ -34,26 +34,35 @@ $rows = $ar->fetch_all();
 
         <div class="tab-content">
           <div id="student" class="tab-pane fade in active show">
-            <div class="datetimepicker">
-                <form class="form-inline " >
-                  <div class="form-group mb-2">
-                    <label for="staticEmail2" class="sr-only">Date from</label>
-                    <input type="date" class="form-control-plaintext" id="staticEmail2" name="date_from" value="<?php echo $date_from; ?>">                
+            <div class="search pb-5">
+                <div class="float-left">
+                  <div class="datetimepicker">
+                      <form class="form-inline " >
+                        <div class="form-group mb-2">
+                          <label for="staticEmail2" class="sr-only">Date from</label>
+                          <input type="date" class="form-control-plaintext" id="staticEmail2" name="date_from" value="<?php echo $date_from; ?>">                
+                        </div>
+                        <div class="form-group mb-2">
+                          <label for="staticEmail2" class="sr-only">Date to</label>
+                          <input type="date" class="form-control-plaintext" id="staticEmail2" name="date_to" value="<?php echo $date_to; ?>">
+                        </div>
+                        <button type="submit" class="btn bg-second text-white mb-2">Search</button>
+                      </form>
                   </div>
-                  <div class="form-group mb-2">
-                    <label for="staticEmail2" class="sr-only">Date to</label>
-                    <input type="date" class="form-control-plaintext" id="staticEmail2" name="date_to" value="<?php echo $date_to; ?>">
-                  </div>
-                  <button type="submit" class="btn bg-second text-white mb-2">Search</button>
-                </form>
+                </div>
+
+                <div class="float-right">
+                  <a class="btn bg-second text-white mb-2" href="export/log.php">Export</a>
+                </div>
             </div>
             <table class="table">
               <thead>
                 <tr class="bg-main text-white">
-                  <th scope="col">Student Number</th>
-                  <th scope="col">Name</th>
+                  <!-- <th scope="col">Student Number</th> -->
+                  <th scope="col">Course</th>
                   <th scope="col">Year</th>
                   <th scope="col">Section</th>
+                  <th scope="col">Name</th>
                   <th scope="col">Time In</th>
                   <th scope="col">Time Out</th>
                 </tr>
@@ -66,14 +75,14 @@ $rows = $ar->fetch_all();
                   $stud = $student->fetch_assoc();
                 ?>
                 <tr>
-                  <td><?php echo $stud['qrcode']; ?></td>
-                  <td><?php echo $value['2']; ?></td>
+                  <!-- <td><?php echo $stud['qrcode']; ?></td> -->
+                  <td><?php echo $stud['course']; ?></td>
                   <td><?php echo $stud['year']; ?></td>
                   <td><?php echo $stud['section']; ?></td>
+                  <td><?php echo $value['2']; ?></td>
                   <td><?php echo $value['4']; ?></td>
                   <td><?php echo $value['5']; ?></td>
                 </tr>
-
                 <?php 
                 }
                 ?>
