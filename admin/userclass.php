@@ -55,7 +55,7 @@ function uploadFile($post)
 {
   
   // photoupload
-  $target_dir = "../uploads/profile/";
+  $target_dir = "";
   $filename = basename($post["photo"]["name"]);
   $target_file = $target_dir . basename($post["photo"]["name"]);
   $uploadOk = 1;

@@ -17,7 +17,7 @@ $pnum = mysqli_real_escape_string($conn, $_POST['pnum']);
 $type = mysqli_real_escape_string($conn, $_POST['type']);
 $studid = mysqli_real_escape_string($conn, $_POST['studid']);
 
-// upload 
+
   $filename = uploadS3($_FILES["photo"]["name"],$_FILES["photo"]["tmp_name"]);
 
 var_dump($_FILES);
