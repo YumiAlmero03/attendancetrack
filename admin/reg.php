@@ -68,7 +68,7 @@ $type = mysqli_real_escape_string($conn, $_POST['type']);
 if (isset($_POST['register'])) {
 $studid = mysqli_real_escape_string($conn, $_POST['studid']);
   // $msg = uploadFile($_FILES)
-  var_dump($_FILES);
+  // var_dump($_FILES);
 
   $filename = uploadS3($studid.$course.$yr.$sec.$ln,$_FILES["photo"]["tmp_name"]);
   $insert_code = "INSERT INTO `registered`(`qrcode`, `firstname`, `lastname`, `type`, `course`, `year`, `section`, `bday`, `email`, `address`, `pname`, `pcontact`, `photo`, `qrphoto`) 
@@ -101,8 +101,9 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
   $qrfile = $registered['qrphoto'];
     $filename = $registered['photo'];
     if ($_FILES['photo']['name'] != '') {
-        $msg = uploadFile($_FILES);
-        $filename =  $msg['filename'];
+        $filename = uploadS3($studid.$course.$yr.$sec.$ln,$_FILES["photo"]["tmp_name"]);
+        // $msg = uploadFile($_FILES);
+        // $filename =  $msg['filename'];
     }
     // var_dump($filename);
   $test = mysqli_query($conn, "UPDATE `registered` SET `firstname` = '".$fn."', `lastname` = '".$ln."', `course` = '".$course."', `year` = '".$yr."', `section` = '".$sec."', `bday` = '".$bday."', `email` = '".$email."', `address` = '".$add."', `pname` = '".$pname."', `pcontact` = '".$pnum."', `photo` = '".$filename."' WHERE `id`=".$reg_id); 
