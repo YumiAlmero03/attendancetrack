@@ -37,7 +37,13 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         mailQR($email, $fn.' '.$ln, $qrfile, $course.$yr.$sec.$ln);
-        header("location: registered.php");
+        if ($type === 'Staff') {
+          header("location: personel.php");
+
+        } else {
+            header("location: registered.php");
+
+        }
       $_SESSION["info"] = "Registered!";
     // } else {
     //    $_SESSION["error"] = $msg['msg'];
@@ -60,7 +66,14 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
     // var_dump($filename);
   $test = mysqli_query($conn, "UPDATE `registered` SET `firstname` = '".$fn."', `lastname` = '".$ln."', `course` = '".$course."', `year` = '".$yr."', `section` = '".$sec."', `bday` = '".$bday."', `email` = '".$email."', `address` = '".$add."', `pname` = '".$pname."', `pcontact` = '".$pnum."', `photo` = '".$filename."' WHERE `id`=".$reg_id); 
       $_SESSION["info"] = "Edited!";
-  header("location: register.php?id=".$reg_id);
+      $type = $registered['type'];
+      if ($type === 'Staff') {
+          header("location: personel.php");
+
+        } else {
+            header("location: registered.php");
+
+        }
 }
  ?>
 
