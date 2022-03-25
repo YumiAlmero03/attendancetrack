@@ -10,10 +10,10 @@ if(!$conn)
 }
 
 function backupDB(){
-    $dbServername = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "db_attendance";
+    $dbServername = "aase00cbfhf9yn.cecs2ncptkar.ap-southeast-1.rds.amazonaws.com";
+    $dbUsername = "atdncmonitoring";
+    $dbPassword = "6PBcFtp#PJ1pyfHUNiil";
+    $dbName = "ebdb";
     $mysqli = mysqli_connect($dbServername,$dbUsername,$dbPassword,$dbName); 
         // $mysqli->select_db($dbName); 
         $mysqli->query("SET NAMES 'utf8'");
