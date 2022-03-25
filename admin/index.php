@@ -19,7 +19,7 @@ $visitors = $visitor->fetch_all();
 
 // counts
 
-$getStud = mysqli_query($conn, "SELECT COUNT(id) as count FROM registered WHERE type='Student'");
+$getStud = mysqli_query($conn, "SELECT COUNT(id) as count FROM registered WHERE type='Student'  and active=1");
 $studentCount = $getStud->fetch_assoc();
 
 $getVisitors = mysqli_query($conn, "SELECT COUNT(id) as count FROM visitor ");
@@ -32,7 +32,7 @@ $getVisit = mysqli_query($conn, "SELECT COUNT(id) as count FROM visitor WHERE ty
 $visitCount = $getVisit->fetch_assoc();
 $getAccounts = mysqli_query($conn, "SELECT COUNT(id) as count FROM users ");
 $accountsCount = $getAccounts->fetch_assoc();
-$getPersonel = mysqli_query($conn, "SELECT COUNT(id) as count FROM users where level<>'class' and level<>'faculty'");
+$getPersonel = mysqli_query($conn, "SELECT COUNT(id) as count FROM registered where type='Staff' and active=1");
 $personelCount = $getPersonel->fetch_assoc();
 ?>
 <div>
