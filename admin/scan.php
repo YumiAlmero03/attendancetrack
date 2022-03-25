@@ -9,7 +9,7 @@ $search_login = "SELECT passnum FROM visitor join login on login.reg_id=visitor.
 $logs = mysqli_query($conn,$search_login);
 $login = $logs->fetch_all();
 
-$subjects = "SELECT code FROM subj where active= 1";
+$subjects = "SELECT code,name FROM subj where active= 1";
 $subj = mysqli_query($conn,$subjects);
 $class = $subj->fetch_all();
 
@@ -44,7 +44,7 @@ $remain = array_diff($passnumchoice, $remove);
                       <option disabled selected>Select Subject</option>
                       <?php 
                         foreach ($class as $value) {
-                          echo "<option value='".$value[0]."'>".$value[0]."</option>";
+                          echo "<option value='".$value[0]."'>".$value[0] . " - " . $value[1] ."</option>";
                         }
                        ?>
                       
