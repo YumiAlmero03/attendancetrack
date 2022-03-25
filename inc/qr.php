@@ -29,7 +29,8 @@ function upload_qr($text, $filename)
 		'Key'    => 'files/qr-'.$fileName,
 		'SourceFile' => $filePath			
 		]);
-	return $result['ObjectURL'];
+
+	return ['awsurl' => $result['ObjectURL'],'tmp' => $filePath];
 
 }
 

@@ -14,7 +14,7 @@ function mailQR($to,$name, $attachment,$filename,$extra = null){
     try {
         //Server settings
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->SMTPDebug = 1;                      //Enable verbose debug output
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
         $mail->Host       = 'smtp.mail.yahoo.com';                     //Set the SMTP server to send through
@@ -32,7 +32,7 @@ function mailQR($to,$name, $attachment,$filename,$extra = null){
 
         //Attachments
         // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-        $mail->addAttachment($attachment, $filename.'.jpg');    //Optional name
+        $mail->addAttachment($attachment, $filename.'.png');    //Optional name
 
         //Content
         $mail->Subject = 'You have been  registered!';

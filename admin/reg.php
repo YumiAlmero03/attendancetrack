@@ -37,10 +37,10 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
     // if ($msg['type'] === 'info') {
       $qrfile = upload_qr($studid, $studid.$course.$ln.'-qr');
       // $filename =  $msg['filename'];
-        mysqli_stmt_bind_param($stmt, "ssssssssssssss", $studid, $fn, $ln, $type, $course, $yr, $sec, $bday, $email, $add, $pname, $pnum, $filename, $qrfile);
+        mysqli_stmt_bind_param($stmt, "ssssssssssssss", $studid, $fn, $ln, $type, $course, $yr, $sec, $bday, $email, $add, $pname, $pnum, $filename, $qrfile['awsurl']);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
-        mailQR($email, $fn.' '.$ln, $qrfile, $course.$yr.$sec.$ln);
+        mailQR($email, $fn.' '.$ln, $qrfile['tmp'], $course.$yr.$sec.$ln);
         // if ($type === 'Staff') {
         //   header("location: personel.php");
 
@@ -88,7 +88,7 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
       </div>
       <div class="card-body">
         <div class="text-center">
-          <img src="<?php echo $qrfile; ?>">
+          <img src="<?php echo $qrfile['awsurl']; ?>">
         </div>
         <table class="table  table-borderless">
           <tr>
