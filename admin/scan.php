@@ -128,7 +128,7 @@ $remain = array_diff($passnumchoice, $remove);
         <h3 class="modal-title " id="visitorExitModalLabel">Exit Visitor Log</h3>
       </div>
         <div>
-            <form action="exit.php" method="post" target="_blank">
+            <form action="exit.php" method="post">
                 <div class="modal-body">
                   <div class="form-group">
                     <input type="number" name="passnum" class="form-control" placeholder="Enter Pass Number" required>
