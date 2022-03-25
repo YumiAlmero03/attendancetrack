@@ -118,9 +118,23 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
         </table>
       </div>
       <div class="card-footer">
-          <?php //echo $msg; ?>
+          <?php 
+            if ($type === 'Staff') {
+              ?>
+          <a href="personel.php" class="btn bg-second btn-block text-white" >Back</a>
+
+              <?php
+
+            } else {
+                ?>
           <a href="register.php" class="btn bg-second btn-block text-white" >Back</a>
-          <a download href="<?php echo $qrfile; ?>" class="btn bg-main text-white btn-block">
+
+              <?php
+
+            } 
+          ?>
+
+          <a download target="_blank" href="<?php echo $qrfile; ?>" class="btn bg-main text-white btn-block">
              Download QR Code
           </a>
       </div>
