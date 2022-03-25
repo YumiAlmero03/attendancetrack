@@ -123,14 +123,14 @@ $staffs = $staff->fetch_all();
                   <tbody>
                     <?php
                     foreach ($staffs as $id => $value) {
-                        $studid = $value['3'];
-                        $personel = mysqli_query($conn, "SELECT course FROM registered WHERE id=$studid");
+                        $theid = $value['3'];
+                        $personel = mysqli_query($conn, "SELECT course FROM registered WHERE id=$theid");
                         $pers = $personel->fetch_assoc();
                     ?>
                     <tr>
                       <td><?php echo $id + 1; ?></td>
                       <td><?php echo $value['2']; ?></td>
-                      <td><?php echo ucfirst($pers['0']); ?></td>
+                      <td><?php echo ucfirst($pers['course']); ?></td>
                       <td><?php echo $value['4']; ?></td>
                       <td><?php echo $value['5']; ?></td>
                     </tr>
