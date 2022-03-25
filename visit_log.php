@@ -47,7 +47,7 @@ function uploadVisitIMG($name,$tmpname)
         'Bucket' => 'onsitelogbook-files',
         'Key'    => $file_name,
         'Body' => $temp_file_location,
-        'ContentType' => 'image/' . $image_type,        
+        'ContentType' => 'image/jpg',        
     ]);
     return $result['ObjectURL'];
 }
@@ -70,10 +70,10 @@ $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo
         mysqli_stmt_close($stmt);
 
     }
-    // header("location: index.php");
+    header("location: index.php");
     
  ?>
 
  <script type="text/javascript">
-    setTimeout(function(){ window.close(); }, 1000);
+    //setTimeout(function(){ window.close(); }, 1000);
 </script>
