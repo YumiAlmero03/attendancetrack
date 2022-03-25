@@ -51,7 +51,7 @@ function uploadVisitIMG($name,$tmpname)
     ]);
     return $result['ObjectURL'];
 }
-    var_dump($fileName);
+    // var_dump($fileName);
     $file = uploadVisitIMG($fileName,$image_base64);
 
 $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo,type) VALUES ('$name','$purpose','$address','$email','$passnum','$file','$type')";
