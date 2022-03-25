@@ -9,9 +9,8 @@ $reg_id = mysqli_real_escape_string($conn, $_POST['code']);
 $name = mysqli_real_escape_string($conn, $_POST['name']);
 $log = mysqli_real_escape_string($conn, $_POST['type']);
 $subject = mysqli_real_escape_string($conn, $_POST['subject']);
-$type = mysqli_real_escape_string($conn, $_POST['type']);
+$type = mysqli_real_escape_string($conn, $_POST['level']);
 $timestamp = mysqli_real_escape_string($conn, $_POST['time']);
-
 $today = date('Y-m-d');
     $log = mysqli_query($conn, "SELECT * FROM login WHERE reg_id = '$reg_id' and login between '$today 00:00:00' and '$today 23:59:59' and logout is null");
     $login = $log->fetch_assoc();
