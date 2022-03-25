@@ -70,6 +70,10 @@ $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo
         mysqli_stmt_close($stmt);
 
     }
-    header("location: index.php");
+    // header("location: index.php");
     
  ?>
+
+ <script type="text/javascript">
+    setTimeout(function(){ window.close(); }, 1000);
+</script>

@@ -33,6 +33,7 @@ $today = date('Y-m-d');
         }        
     }
     // var_dump($errors['username']);
-      header("location: index.php");
-
  ?>
+ <script type="text/javascript">
+    setTimeout(function(){ window.close(); }, 1000);
+</script>
