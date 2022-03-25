@@ -54,7 +54,7 @@ $remain = array_diff($passnumchoice, $remove);
                     <video id="preview" width="100%"></video>        
                 </div>
                 <div class="py-5">
-                    <button class="btn bg-main text-white btn-block" data-toggle="modal" data-target="#visitorModal">Visitor</button>
+                    <!-- <button class="btn bg-main text-white btn-block" data-toggle="modal" data-target="#visitorModal">Visitor</button> -->
                 </div>
             </div>
         </div>
