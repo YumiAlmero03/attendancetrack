@@ -138,7 +138,7 @@ $studid = mysqli_real_escape_string($conn, $_POST['studid']);
             } 
           ?>
 
-          <a download target="_blank" href="<?php echo $qrfile; ?>" class="btn bg-main text-white btn-block">
+          <a download target="_blank" href="<?php echo $qrfile['awsurl']; ?>" class="btn bg-main text-white btn-block">
              Download QR Code
           </a>
       </div>
