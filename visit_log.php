@@ -23,7 +23,7 @@ $img = $_POST['image'];
     $fileName = uniqid() . '.png';
   
     $file = uploadS3($fileName,$_POST['image']);
-    ;
+    
 
 $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo,type) VALUES ('$name','$purpose','$address','$email','$passnum','$file','$type')";
     mysqli_query($conn,$insert_visit);
