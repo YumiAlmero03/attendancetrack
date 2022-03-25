@@ -21,11 +21,11 @@ $img = $_POST['image'];
   
     $image_base64 = base64_decode($image_parts[1]);
     $fileName = uniqid() . '.'.$image_type;
-    var_dump($image_parts);
-    var_dump($image_type_aux);
-    var_dump($image_type);
-    var_dump($image_base64);
-    var_dump($fileName);
+    // var_dump($image_parts);
+    // var_dump($image_type_aux);
+    // var_dump($image_type);
+    // var_dump($image_base64);
+    // var_dump($fileName);
 function uploadVisitIMG($name,$tmpname)
 {
     // var_dump($file);
