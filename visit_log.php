@@ -20,40 +20,11 @@ $img = $_POST['image'];
     $image_type = $image_type_aux[1];
   
     $image_base64 = base64_decode($image_parts[1]);
-    $fileName = uniqid() . '.'.$image_type;
-    var_dump($image_parts);
-    var_dump($image_type_aux);
-    var_dump($image_type);
-    var_dump($image_base64);
-    var_dump($fileName);
-function uploadVisitIMG($name,$tmpname)
-{
-    // var_dump($file);
-    $file_name = 'files/'.$name;   
-    $temp_file_location = $tmpname; 
 
-    require 'inc/vendor/autoload.php';
+    $fileName = uniqid() . '.png';
+  
+    $file = uploadS3($fileName,$_POST['image']);
 
-    $s3 = new Aws\S3\S3Client([
-        'region'  => 'ap-southeast-1',
-        'version' => 'latest',
-        'credentials' => [
-            'key'    => "AKIAVZ4H6LJO4JMRJISB",
-            'secret' => "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",
-        ]
-    ]);     
-
-    $result = $s3->putObject([
-        'Bucket' => 'onsitelogbook-files',
-        'Key'    => $file_name,
-        'Body' => $temp_file_location,
-        'ContentType' => 'image/' . $image_type,        
-    ]);
-    return $result['ObjectURL'];
-}
-    var_dump($fileName);
-    $file = uploadVisitIMG($fileName,$image_base64);
-    
 
 $insert_visit = "INSERT INTO visitor (name, purpose, address,email,passnum,photo,type) VALUES ('$name','$purpose','$address','$email','$passnum','$file','$type')";
     mysqli_query($conn,$insert_visit);
