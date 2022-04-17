@@ -13,21 +13,27 @@ $username = $_SESSION['username'];
 if ($_SESSION['level'] === 'class') {
     $fetchuser = mysqli_query($conn, "SELECT registered.course, registered.year, registered.section FROM users join registered on users.reg_id = registered.id where users.username='$username'");
     $user = $fetchuser->fetch_assoc();
-    $ar = mysqli_query($conn, "SELECT * FROM login join registered on login.reg_id = registered.id WHERE login.type='Student' and login.login between '$date_from 00:00:00' and '$date_to 23:59:59'");
+    $department = $user['course'];
+    $year = $user['year'];
+    $section = $user['section'];
+    $sec = 'Section: '.$department." ".$year."-".$section;
+    $ar = mysqli_query($conn, "SELECT * FROM login join registered on login.reg_id = registered.id WHERE login.type='Student' and registered.course = '$department' and registered.year = '$year' and registered.section = '$section' and login.login between '$date_from 00:00:00' and '$date_to 23:59:59'");
 } else {
     $fetchuser = mysqli_query($conn, "SELECT value FROM users join meta on users.id = meta.user_id WHERE meta.key='department' and users.username='$username'");
     $user = $fetchuser->fetch_assoc();
     $department = $user['value'];
+    $sec = "Department: ".$department;
     $ar = mysqli_query($conn, "SELECT * FROM login join registered on login.reg_id = registered.id WHERE login.type='Student' and login.login between '$date_from 00:00:00' and '$date_to 23:59:59' and registered.course = '$department'");
 }
 $rows = $ar->fetch_all();
+// var_dump($user);
 ?>
 <div>
   
   <div class="bg-main-light">
     <div class="container-fluid p-5">
         <ul class="nav nav-tabs page-title">
-          <li ><a data-toggle="tab" href="#student" class="active">Sections</a></li>
+          <li ><a data-toggle="tab" href="#student" class="active"><?php echo $sec; ?></a></li>
         </ul>
     </div>
     <div class="container-fluid p-5">
@@ -53,6 +59,7 @@ $rows = $ar->fetch_all();
 
                 <div class="float-right">
                   <a class="btn bg-second text-white mb-2" href="export/log.php">Export</a>
+                  <a class="btn bg-second text-white mb-2" href="../inc/pdf.php?date_from=<?php echo $date_from; ?>&date_to=<?php echo $date_to; ?>&year=<?php echo $year; ?>&section=<?php echo $section; ?>&course=<?php echo $department; ?>" data-toggle="tooltip" data-placement="top" title="7 days Report">Report</a>
                 </div>
             </div>
             <table class="table">

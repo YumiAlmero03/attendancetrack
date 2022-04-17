@@ -256,7 +256,7 @@ const chartMonth = new Chart(ctxMnt, {
             $lbl3 = $visitor->fetch_all();
             foreach ($lbl3 as $value) {
                 $mon = $value[0] - 1;
-              echo( "'".$month[$mon]."'");
+              echo( "'".$month[$mon]."',");
             }
            ?>
         ],
@@ -265,7 +265,7 @@ const chartMonth = new Chart(ctxMnt, {
             data: [
               <?php 
                       foreach ($lbl3 as $value) {
-                        echo( "'".$value[1]."'");
+                        echo( "'".$value[1]."',");
                       }
                     ?>
             ],

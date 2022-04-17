@@ -14,7 +14,7 @@ if (otpVerify($_POST["code"], $otp['otp'])) {
     header("location: ../admin/index.php");
 } else {
     $_SESSION["error"] = "OTP Incorrect";
-    header("location: /admin/otp.php");
+    header("location: ../admin/otp.php");
 }
 // date_default_timezone_set('Asia/Manila');
 // check if expired

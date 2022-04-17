@@ -50,7 +50,8 @@ $staffs = $staff->fetch_all();
                 </div>
 
                 <div class="float-right">
-                  <a class="btn bg-second text-white mb-2" href="export/log.php">Export</a>
+                  <a class="btn bg-second text-white mb-2" href="export/log.php?date_from=<?php echo $date_from; ?>&date_to=<?php echo $date_to; ?>">Export</a>
+                  <a class="btn bg-second text-white mb-2" href="../inc/pdf.php?date_from=<?php echo $date_from; ?>" data-toggle="tooltip" data-placement="top" title="7 days Report">Report</a>
                 </div>
             </div>
             <table class="table">
